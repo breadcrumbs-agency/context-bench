@@ -1,0 +1,16 @@
+{
+ "name": "locomo",
+ "license": "CC-BY-NC-4.0",
+ "homepage": "https://github.com/snap-research/locomo",
+ "revision": "cbfbc1dba6bc53d00625212a0f22d55ffee7c1fc",
+ "files": [
+  {
+   "file": "locomo10.json",
+   "url": "https://raw.githubusercontent.com/snap-research/locomo/cbfbc1dba6bc53d00625212a0f22d55ffee7c1fc/data/locomo10.json",
+   "sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4",
+   "bytes": 2805274
+  }
+ ],
+ "size": 2805274,
+ "about": "Ten long conversations between two people (272 sessions, 5,882 turns), each one chat: the first speaker is the user, the other the assistant, one message per turn, the session date before the first turn of each session. 1,981 questions with gold turns. Non-commercial license: the repository holds none of its text."
+}

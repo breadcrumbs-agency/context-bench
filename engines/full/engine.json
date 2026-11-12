@@ -1,0 +1,13 @@
+{
+ "name": "full",
+ "version": "1",
+ "license": "MIT",
+ "access": "open-source",
+ "homepage": "https://github.com/breadcrumbs-agency/context-bench/tree/master/engines/full",
+ "source": "in-repo: engines/full/adapter.py",
+ "about": "Ceiling: no limit. The whole chat goes out at each request. It has no budget and no rank. Port of ace_bench's Full.",
+ "models": [],
+ "runs_on": "mac",
+ "tuned_on": [],
+ "publication": null
+}

@@ -1,0 +1,3 @@
+# Exact pins, resolved with pip on macOS arm64, Python 3.14, on 2026-11-11. The first line is the engine; the others are its dependencies.
+breadcrumbs @ git+https://github.com/breadcrumbs-agency/hermes-breadcrumb-plugin@5be1e74c4e0e08a4b42d545cbad5be4c82c32472
+google-crc32c==1.9.0

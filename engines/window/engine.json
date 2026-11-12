@@ -1,0 +1,13 @@
+{
+ "name": "window",
+ "version": "1",
+ "license": "MIT",
+ "access": "open-source",
+ "homepage": "https://github.com/breadcrumbs-agency/context-bench/tree/master/engines/window",
+ "source": "in-repo: engines/window/adapter.py",
+ "about": "Floor: the newest messages that fit the budget, cut again at each request. The system message stays. Port of ace_bench's Window.",
+ "models": [],
+ "runs_on": "mac",
+ "tuned_on": [],
+ "publication": null
+}

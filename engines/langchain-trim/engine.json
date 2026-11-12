@@ -1,0 +1,13 @@
+{
+ "name": "langchain-trim",
+ "version": "1.8.0",
+ "license": "MIT",
+ "access": "open-source",
+ "homepage": "https://github.com/langchain-ai/langchain",
+ "source": "langchain-core==1.8.0",
+ "about": "langchain-core trim_messages: strategy 'last', the harness's token counter, include_system True, start_on 'human', allow_partial False. It keeps the newest messages that fit and ends the cut at a human message, so a chat with one human message (an agent session) keeps nothing but the system message once it passes the budget. The adapter hands the library one message object for each chat message (type from the role, text from the harness's view of the message) and returns the original message dicts. Pure Python, no model.",
+ "models": [],
+ "runs_on": "mac",
+ "tuned_on": [],
+ "publication": null
+}

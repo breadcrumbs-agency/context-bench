@@ -1,0 +1,16 @@
+{
+ "name": "codex-sessions",
+ "license": "MIT",
+ "homepage": "https://huggingface.co/datasets/israellaguan/codex-tool-use-trajectories",
+ "revision": "69019b2c717fe7be8f4fab16b317e4b8bbcf831b",
+ "files": [
+  {
+   "file": "trajectories.train.jsonl",
+   "url": "https://huggingface.co/datasets/israellaguan/codex-tool-use-trajectories/resolve/69019b2c717fe7be8f4fab16b317e4b8bbcf831b/trajectories.train.jsonl",
+   "sha256": "62c62865676427a0b3cf373741fedad384fdd6ca3da8f652205b1e9483b2dc2e",
+   "bytes": 41158544
+  }
+ ],
+ "size": 41158544,
+ "about": "Agent sessions of a coding agent (Codex Desktop) in a local workspace: 403 runs, each a chat in the OpenAI chat format with assistant tool calls and tool results (a median of 37 messages and 22 tool calls; the largest has 241 messages). The license is MIT as the dataset card declares it; the raw logs came from a third party, whom the card thanks. No questions. A chat calls the model at its user message and after the last tool result of each run of tool results. The replay moves the cuts of each engine and not the model's calls: it measures exposure and cost, not behavior."
+}

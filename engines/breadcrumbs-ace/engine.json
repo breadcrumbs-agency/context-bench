@@ -1,0 +1,15 @@
+{
+ "name": "breadcrumbs-ace",
+ "version": "0.4.1",
+ "license": "MIT",
+ "access": "open-source",
+ "homepage": "https://github.com/breadcrumbs-agency/hermes-breadcrumb-plugin",
+ "source": "breadcrumbs @ git+https://github.com/breadcrumbs-agency/hermes-breadcrumb-plugin@5be1e74c4e0e08a4b42d545cbad5be4c82c32472",
+ "about": "ACE (adaptive context engineering) of the breadcrumbs plugin, at its default settings, driven through Ace.select_context as ace_bench drives it: the budget is the target, one scratch home for each chat, the shared token counter (0.25 tokens per byte), no budget_tokens argument and no model name. Over the target it folds the older turns into one layer of crumbs and keeps the newest turns exact. No model. The version string 0.4.1 is the one of the tag v0.4.1 too; the pin is commit 5be1e74 (ACE with ace_ceiling, which is 0 by default), and the adapter checks the installed commit. Reading raises ACE's target (RATCHET), so on tool sessions a request can pass the budget: the board counts it.",
+ "models": [],
+ "runs_on": "mac",
+ "tuned_on": [
+  "locomo and longmemeval-s: the layer and tail shares, the small-target rule and the fold share were chosen on these two sources with the private predecessor of this bench (ace_bench.py and ace_paired.py, Nov 9 2026); the paired tuning run used 100 LongMemEval-S questions (every fourth non-abstention question), which the 419 of this board include"
+ ],
+ "publication": null
+}
