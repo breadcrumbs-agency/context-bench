@@ -7,10 +7,17 @@ after its last request. The harness takes the engine's state once, then asks eac
 the end of the chat, scores the request that the engine sends as the context, and restores the state, so that each
 question sees the state at the end of the chat. The engine never gets a gold turn, an answer or a score. The harness
 does not cut a request: it records the largest request, the requests over the budget and the tokens over it.
+
+The trace. A run keeps the tokens of each request of one chat, for the trace chart. The chat is the first by id whose
+largest uncut request is over the largest budget of the run; when no chat is over it, the chat with the largest uncut
+request (on a tie, the first by id). An uncut request is the request as the harness hands it to the engine, before
+select() cuts it, so the choice does not depend on the engine: every engine of a set of runs draws the same chat.
+A run with no budget (a ceiling engine) has none to be over: it takes the first chat by id.
 """
 
 import datetime
 import hashlib
+import itertools
 import os
 import platform
 import statistics
@@ -68,18 +75,46 @@ def sent(out):
     return list(out)
 
 
-class BudgetRun:
-    """All chats of one engine at one budget."""
+def largest_uncut(chat):
+    """The tokens of the largest request of the replay of a chat, as the harness hands it to the engine: the chat so
+    far, before select() cuts it. It is the same for every engine. The questions come after the replay and do not
+    count."""
+    upto = list(itertools.accumulate(meter.message_bytes(m) for m in chat.messages))  # bytes of messages[:i + 1]
+    return max((upto[i] / 4 for i in chat.requests), default=0.0)
 
-    def __init__(self, budget, card):
-        self.budget, self.card = budget, card
+
+class BudgetRun:
+    """All chats of one engine at one budget. top is the largest budget of the whole run (None for a ceiling)."""
+
+    def __init__(self, budget, card, top=None):
+        self.budget, self.card, self.top = budget, card, top
         self.rows, self.lines, self.times, self.chat_ids = [], [], [], []
-        self.trace = None  # the first chat by id: the tokens of each of its requests (chart e of the board)
+        self.passing = None  # trace: (id, tokens) of the first chat by id with an uncut request over top
+        self.largest = None  # trace, when no chat is over top: (largest uncut request, id, tokens)
         self.t0 = time.perf_counter()
+
+    def offer(self, chat_id, peak, tokens):
+        """Offer a chat for the trace. peak is the largest uncut request of the chat, tokens the size of each request
+        that the engine sent for it. A chat with no request has nothing to draw."""
+        if not tokens:
+            return
+        over = self.top is None or peak > self.top  # equal is not over, as in the meter; no budget: none to be over
+        if over and (self.passing is None or chat_id < self.passing[0]):
+            self.passing = (chat_id, tokens)
+        if self.largest is None or peak > self.largest[0] or (peak == self.largest[0] and chat_id < self.largest[1]):
+            self.largest = (peak, chat_id, tokens)
+
+    @property
+    def trace(self):
+        """{"chat": id, "tokens": [...]} for the trace chart, or None: the first chat by id over the largest budget of
+        the run; when no chat is over it, the chat with the largest uncut request."""
+        pick = self.passing or (self.largest[1:] if self.largest else None)
+        return {"chat": pick[0], "tokens": pick[1]} if pick else None
 
     def chat(self, adapter, manifest, chat):
         sizer = meter.Sizer()
         replay = meter.Replay(sizer, self.card, self.budget)
+        peak = largest_uncut(chat)  # taken before the engine sees the chat
         qdropped, stats = 0, {}
         with tempfile.TemporaryDirectory(prefix="context-bench-") as work:
             eng = adapter(work, manifest, self.budget)
@@ -111,8 +146,7 @@ class BudgetRun:
             finally:
                 eng.close()
         self.chat_ids.append(chat.id)
-        if self.trace is None or chat.id < self.trace["chat"]:
-            self.trace = {"chat": chat.id, "tokens": replay.series}
+        self.offer(chat.id, peak, replay.series)
         self.lines.append({"id": chat.id, "msgs": len(chat.messages), "requests": replay.requests,
                            "tokens": replay.tokens, "cached": replay.cached, "max": replay.top, "over": replay.over,
                            "excess": round(replay.excess, 2), "dropped": replay.dropped,
@@ -167,12 +201,13 @@ def run(engine_folder, source_folder, data=None, budgets=None, limit=0, runner="
     card = card or meter.load_card()
     ceiling = bool(getattr(adapter, "ceiling", False))
     if ceiling:
-        budgets = [None]
+        budgets, top = [None], None
     else:
         budgets = sorted(set(budgets or BUDGETS))
         if not all(isinstance(b, int) and not isinstance(b, bool) and b > 0 for b in budgets):
             raise ValueError("a budget is a positive number of tokens")
-    runs = [BudgetRun(b, card) for b in budgets]
+        top = budgets[-1]  # the largest budget of the run: the trace chat is the first chat over it
+    runs = [BudgetRun(b, card, top) for b in budgets]
     load_before, started = _load(), datetime.datetime.now(datetime.timezone.utc)
     done = 0
     for chat in loader.chats(files, limit):

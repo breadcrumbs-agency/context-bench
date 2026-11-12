@@ -11,8 +11,8 @@ import tempfile
 import unittest
 import xml.etree.ElementTree as ET
 
-from contextbench import board, cli, meter, plot, run as runner
-from support import TOY, Fixture, make_record
+from contextbench import Chat, board, cli, meter, plot, run as runner
+from support import SPY_CEILING, TOY, Fixture, make_record, msg
 
 NS = "{http://www.w3.org/2000/svg}"
 GOLDEN = os.path.join(os.path.dirname(os.path.abspath(__file__)), "golden")
@@ -409,31 +409,20 @@ class TestTrace(Fixture):
         folder, _log = self.engine("all")
         return runner.run(folder, self.source, self.data, budgets=[1000, 2000], **kw)
 
-    def test_the_trace_is_the_tokens_of_each_request_of_the_first_chat_by_id(self):
+    def test_the_trace_is_the_tokens_of_each_request_of_one_chat(self):
         rec = self.run_all()
         for run in rec["runs"]:
             self.assertEqual(len(run["trace"]), 1)
             trace = run["trace"][0]
-            self.assertEqual(trace["chat"], "chat-a")
+            self.assertEqual(trace["chat"], "chat-a")  # no chat is over the budget: the largest one
             line = run["chats"][0]
             self.assertEqual(len(trace["tokens"]), line["requests"])
             self.assertAlmostEqual(math.fsum(trace["tokens"]), line["tokens"], places=6)
             self.assertEqual(max(trace["tokens"]), line["max"])
             self.assertEqual(trace["tokens"], sorted(trace["tokens"]))  # the "all" engine sends the whole chat: it grows
 
-    def test_the_first_chat_by_id_does_not_depend_on_the_order_of_the_file(self):
-        with open(self.data, "w") as f:
-            json.dump(list(reversed(TOY)), f)
-        import hashlib
-        with open(self.data, "rb") as f:
-            digest = hashlib.sha256(f.read()).hexdigest()
-        path = os.path.join(self.source, "source.json")
-        with open(path) as f:
-            manifest = json.load(f)
-        manifest["files"][0]["sha256"] = digest
-        manifest["files"][0]["bytes"] = manifest["size"] = os.path.getsize(self.data)
-        with open(path, "w") as f:
-            json.dump(manifest, f)
+    def test_the_trace_chat_does_not_depend_on_the_order_of_the_file(self):
+        self.use(list(reversed(TOY)))
         rec = self.run_all()
         self.assertEqual([c["id"] for c in rec["runs"][0]["chats"]], ["chat-b", "chat-a"])
         self.assertEqual(rec["runs"][0]["trace"][0]["chat"], "chat-a")
@@ -472,6 +461,97 @@ class TestTrace(Fixture):
             self.assertEqual(f.read(), plot.build(board.load([recs]))["toy-exact.svg"].encode("utf-8"))
         with self.assertRaises(SystemExit):
             cli.main(["plot", os.path.join(self.dir, "empty"), "--out", os.path.join(self.dir, "none")])
+
+
+def toy_chat(name, turns):
+    """A toy chat with no question: `turns` turns of 100 characters, Ann (the user) and Bob in turn."""
+    who = ("Ann", "Bob")
+    return {"id": name, "qa": [], "turns": [{"dia": "D1:%d" % (k + 1), "sess": "s1", "date": "1 May",
+                                             "body": who[k % 2] + ": " + "x" * 95} for k in range(turns)]}
+
+
+class TestTraceChoice(Fixture):
+    """The trace chat of a run is the first chat by id whose largest uncut request is over the largest budget of the
+    run; when no chat is over it, the chat with the largest uncut request."""
+
+    # By size: chat-1 < chat-2 < chat-4 < chat-3. So the first chat over a budget is neither the first of the file, the
+    # last by id nor the largest, and the largest chat is neither the first nor the last by id.
+    CHATS = [toy_chat("chat-1", 2), toy_chat("chat-2", 6), toy_chat("chat-3", 12), toy_chat("chat-4", 9)]
+
+    def setUp(self):
+        super().setUp()
+        self.use(self.CHATS)
+        folder, _log = self.engine("all")
+        rec = runner.run(folder, self.source, self.data, budgets=[10 ** 9])
+        self.peak = {c["id"]: c["max"] for c in rec["runs"][0]["chats"]}  # "all" sends each request uncut
+
+    def between(self, a, b):
+        """A budget (whole tokens) that chat a is under and chat b is over."""
+        budget = int((self.peak[a] + self.peak[b]) / 2)
+        self.assertLess(self.peak[a], budget)
+        self.assertLess(budget, self.peak[b])
+        return budget
+
+    def picked(self, budgets, mode="all", **kw):
+        """The trace chat of each run of the record."""
+        folder, _log = self.engine(mode, **kw)
+        rec = runner.run(folder, self.source, self.data, budgets=budgets)
+        return [r["trace"][0]["chat"] for r in rec["runs"]]
+
+    def test_the_trace_chat_is_the_first_by_id_over_the_largest_budget(self):
+        self.assertEqual(self.picked([self.between("chat-1", "chat-2")]), ["chat-2"])  # chat-1 stays under it
+        self.assertEqual(self.picked([self.between("chat-2", "chat-4")]), ["chat-3"])  # chat-4 is over, but chat-3 is first
+        self.assertEqual(self.picked([int(self.peak["chat-1"]) - 10]), ["chat-1"])  # all are over: the first by id
+        # the largest budget decides, for the runs at every budget: one chat for the whole record
+        low, high = int(self.peak["chat-1"]) - 10, self.between("chat-1", "chat-2")
+        self.assertEqual(self.picked([low, high]), ["chat-2", "chat-2"])
+        self.assertEqual(self.picked([high, low]), ["chat-2", "chat-2"])
+        # the order of the file does not matter
+        self.use(list(reversed(self.CHATS)))
+        self.assertEqual(self.picked([self.between("chat-1", "chat-2")]), ["chat-2"])
+        self.assertEqual(self.picked([self.between("chat-2", "chat-4")]), ["chat-3"])
+
+    def test_when_no_chat_is_over_the_budget_the_trace_chat_is_the_one_with_the_largest_uncut_request(self):
+        self.assertEqual(self.picked([int(self.peak["chat-3"]) + 50]), ["chat-3"])
+        self.use(list(reversed(self.CHATS)))
+        self.assertEqual(self.picked([int(self.peak["chat-3"]) + 50]), ["chat-3"])
+        # a tie goes to the first by id, also when the file lists it last
+        self.use([toy_chat("chat-b", 6), toy_chat("chat-a", 6), toy_chat("chat-c", 2)])
+        self.assertEqual(self.picked([10 ** 6]), ["chat-a"])
+
+    def test_the_choice_follows_the_uncut_request_and_not_what_the_engine_sent(self):
+        budget = self.between("chat-1", "chat-2")
+        folder, _log = self.engine("short")  # the system message and the newest message: far under the budget
+        rec = runner.run(folder, self.source, self.data, budgets=[budget])
+        trace = rec["runs"][0]["trace"][0]
+        self.assertEqual(trace["chat"], "chat-2")
+        self.assertEqual(len(trace["tokens"]), 3)
+        self.assertLess(max(trace["tokens"]), budget)  # the engine's own sizes are in the trace
+
+    def test_a_run_with_no_budget_takes_the_first_chat_by_id(self):
+        # chat-1 is the shortest: a run with no budget has none to be over, so the rule does not look for a large chat
+        self.assertEqual(self.picked([1000], name="spy-top", code=SPY_CEILING), ["chat-1"])
+        self.use(list(reversed(self.CHATS)))
+        self.assertEqual(self.picked([1000], name="spy-top", code=SPY_CEILING), ["chat-1"])
+
+
+class TestTraceUnits(unittest.TestCase):
+    def test_the_largest_uncut_request_is_the_chat_so_far_at_its_last_request(self):
+        msgs = [msg("system", 4), msg("user", 44), msg("assistant", 44), msg("user", 44), msg("assistant", 44)]
+        # 20 bytes, then 60 for each message; the answer after the last request is not in it
+        self.assertEqual(runner.largest_uncut(Chat("c", msgs, [1, 3])), (20 + 60 * 3) / 4)
+        self.assertEqual(runner.largest_uncut(Chat("c", msgs, [1])), (20 + 60) / 4)
+        self.assertEqual(runner.largest_uncut(Chat("c", msgs, [])), 0.0)
+
+    def test_a_chat_that_is_equal_to_the_budget_is_not_over_it(self):
+        run = runner.BudgetRun(100, meter.load_card(), 100)
+        run.offer("a", 100.0, [1.0])
+        self.assertEqual(run.trace, {"chat": "a", "tokens": [1.0]})  # none is over: the largest
+        run.offer("b", 100.25, [2.0])
+        self.assertEqual(run.trace, {"chat": "b", "tokens": [2.0]})  # over, though a is first by id
+        run.offer("c", 500.0, [])  # no request: nothing to draw
+        self.assertEqual(run.trace, {"chat": "b", "tokens": [2.0]})
+        self.assertIsNone(runner.BudgetRun(100, meter.load_card(), 100).trace)
 
 
 if __name__ == "__main__":

@@ -154,6 +154,19 @@ class Fixture(unittest.TestCase):
             json.dump(manifest(name, mode=mode, log=log, **kw), f)
         return folder, log
 
+    def use(self, chats):
+        """Put other toy chats in the data file, and pin the source to the new bytes."""
+        with open(self.data, "w") as f:
+            json.dump(chats, f)
+        path = os.path.join(self.source, "source.json")
+        with open(path) as f:
+            pin = json.load(f)
+        with open(self.data, "rb") as f:
+            pin["files"][0]["sha256"] = hashlib.sha256(f.read()).hexdigest()
+        pin["files"][0]["bytes"] = pin["size"] = os.path.getsize(self.data)
+        with open(path, "w") as f:
+            json.dump(pin, f)
+
 
 def read(path, mode="r"):
     with open(path, mode) as f:

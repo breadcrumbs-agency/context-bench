@@ -144,7 +144,7 @@ under its tables. `--private` also charts the runs that the board withholds.
 | `charts/<source>-cost.svg` | input cost per request in dollars against budget: a panel at Sonnet 5.5 and a panel at Haiku 5.5 |
 | `charts/<source>-tradeoff.svg` | exact against dollars per request at Sonnet 5.5: a mark for each engine and budget, `full` as the ceiling mark |
 | `charts/<source>-cache.svg` | cache reuse against budget |
-| `charts/<source>-trace.svg` | the tokens of each request of one chat (the first by id), in order: a panel for each budget, a line for each engine. `drop` and ACE fold in a sawtooth, `window` stays at its cap, and `full` leaves the scale (a note says where) |
+| `charts/<source>-trace.svg` | the tokens of each request of one chat, in order: a panel for each budget, a line for each engine. The chat is the first by id whose largest uncut request is over the largest budget of the run (see below). `drop` and ACE fold in a sawtooth, `window` stays at its cap, and `full` leaves the scale (a note says where) |
 
 A source without questions (codex-sessions) has the cost, cache and trace charts only. Lines of engines that send the same
 messages lie on each other (in the codex chat of the first board all five do: it has 8 requests, all under the budget);
@@ -156,8 +156,15 @@ its unit. Each point carries its number from the record, in its SVG `<title>` (a
 (visible where GitHub shows the SVG as an image). The tests check them: a golden file, the labels against the record, the
 zero of each axis, the equal steps, the 1.96 of the bars.
 
-The trace chart needs one more field in the record. Each run keeps `trace`: the tokens of each request of the first chat
-by id, on one line. The harness counts it as it counts every request, and it changes no other number.
+The trace chart needs one more field in the record. Each run keeps `trace`: the tokens of each request of one chat, on
+one line. The harness counts it as it counts every request, and it changes no other number.
+
+A chat that stays under the budget shows nothing: no engine cuts it, so every engine draws the same line. (The first
+chat of `codex-sessions` is such a chat.) So the chat is the first by id whose largest uncut request is over the largest
+budget of the run. An uncut request is the request as the harness hands it to the engine, before the engine cuts it.
+The choice does not depend on the engine, so all engines draw the same chat. When no chat is over the budget, it is the
+chat with the largest uncut request (on a tie, the first by id). A run with no budget (`full`) has none to be over, and
+it takes the first chat by id.
 
 ## The rules: apples to apples
 
@@ -279,6 +286,10 @@ of the maintainers). kali was not reachable when this board was written.
   use agrees with the license.
 - The data of `codex-sessions` is one developer's sessions with one agent. It shows how engines cut real tool
   sessions, not how any engine would have steered them.
+- The trace chart draws one chat. When the runs of a source chose different chats (runs at different budgets in
+  separate files, or a `full` run on a source whose first chat is under the budget), it draws the runs of the chat with
+  the lowest id and leaves out the others; a `full` run on a lower chat leaves out every engine. On the first board all
+  runs of a source chose the same chat.
 
 ## Port check against `ace_bench`
 

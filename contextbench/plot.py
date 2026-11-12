@@ -8,7 +8,9 @@ The charts of a source (file charts/<source>-<chart>.svg):
   cost      input cost per request in US dollars against budget: a panel at Sonnet 5.5 and a panel at Haiku 5.5
   tradeoff  exact against input cost per request at Sonnet 5.5, a mark for each engine and budget; full is the ceiling
   cache     cache reuse against budget
-  trace     the tokens of each request of one chat (the first by id), in order: a panel for each budget
+  trace     the tokens of each request of one chat, in order: a panel for each budget. The chat is the one that the
+            records hold in `trace`: the first by id whose largest uncut request is over the largest budget of the
+            run (the rule is in run.py)
 A source without questions has cost, cache and trace only.
 
 Rules of every chart: each measured axis is linear and starts at zero, at the bottom and at the left. The budget axis
