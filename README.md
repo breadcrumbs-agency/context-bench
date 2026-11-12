@@ -146,7 +146,9 @@ under its tables. `--private` also charts the runs that the board withholds.
 | `charts/<source>-cache.svg` | cache reuse against budget |
 | `charts/<source>-trace.svg` | the tokens of each request of one chat (the first by id), in order: a panel for each budget, a line for each engine. `drop` and ACE fold in a sawtooth, `window` stays at its cap, and `full` leaves the scale (a note says where) |
 
-A source without questions (codex-sessions) has the cost, cache and trace charts only.
+A source without questions (codex-sessions) has the cost, cache and trace charts only. Lines of engines that send the same
+messages lie on each other (in the codex chat of the first board all five do: it has 8 requests, all under the budget);
+the table under each plot lists every engine.
 
 Every chart follows five rules. Each measured axis is linear and starts at zero, at the bottom and at the left. The budget
 axis has equal steps and is labeled with the budget values (the budgets double; the steps do not). Each axis label names
@@ -283,10 +285,12 @@ of the maintainers). kali was not reachable when this board was written.
 The ports were checked against `ace_bench`'s record of Nov 9 2026 (bench/results/ace-bench.json of the private repository).
 On LoCoMo (4096, 8192, 16384) and LongMemEval-S (8192, 32768, 65536, 419 questions), `full`, `window` and `drop` on this
 harness equal the old numbers in every figure that both print: exact, words, context tokens, cache_reuse, cost per
-request, requests (2,938 and 102,236), the largest request, and the folds of `drop`. `breadcrumbs-ace` does not, because
-ACE has moved on since Nov 9: master has `FOLD_TO` 0.9 (it was 0.6), the small-target shares for budgets up to
-16,384, the gearbox dials (off by default) and `ace_ceiling` (0 by default). On LoCoMo at 8,192 tokens its exact is now
-0.292 (Nov 9: 0.181); on LongMemEval-S at 32,768 it is 0.380 (0.331). Nothing was tuned to close or open the gap.
+request, requests (2,938 and 102,236), the largest request, and the folds of `drop`. `breadcrumbs-ace` does not. It
+runs master ACE (commit 5be1e74) at its default settings, and master differs from Nov 9: `FOLD_TO` is 0.9 (it was 0.6),
+and it has small-target shares for budgets up to 16,384, gearbox dials (off by default) and `ace_ceiling` (0 by
+default). No run isolated which change moves which number. Nothing was tuned to close or open the gap. On LoCoMo at
+8,192 tokens its exact is now 0.2925 (Nov 9: 0.1806); on LongMemEval-S it is 0.3799 at 32,768 tokens (Nov 9: 0.3313) and
+0.5824 at 65,536 tokens (Nov 9: 0.5985).
 The gap is ACE's change, not the port: `ace_bench` itself, run on the same master ACE (commit 5be1e74), gives the same
 figures as `breadcrumbs-ace` here on LoCoMo at 4,096 and 8,192 tokens (exact 0.1368 and 0.2925, folds 466 and 172, cost
 per request 1105.3 and 1221.0, largest request 4095.75 and 8190.75).
@@ -310,8 +314,10 @@ python -m contextbench plot results/public --out charts
 ```
 
 `full` has no budget and runs once for each source (`locomo`, `longmemeval-s`); it is not run on `codex-sessions`. On a
-12-core Mac, `breadcrumbs-ace` takes 8.5 minutes on LongMemEval-S at 32,768 tokens and 5 minutes at 65,536; the others
-take one to five minutes. A run keeps one chat in memory at a time, and the LongMemEval-S file once (about 1 GB).
+12-core Mac that also ran other jobs, `breadcrumbs-ace` took 12 minutes on LongMemEval-S at 32,768 tokens, 9 at 65,536
+and 40 at 8,192 (more folds). `langchain-trim` and `llamaindex-buffer` took one to two minutes for each budget, and
+`full`, `window` and `drop` about one minute. A run keeps one chat in memory at a time, and the LongMemEval-S file once
+(about 1 GB).
 
 ## Who keeps the board
 

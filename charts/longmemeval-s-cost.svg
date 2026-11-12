@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1108" viewBox="0 0 840 1108" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#222222">
+<title>longmemeval-s: input cost per request against budget</title>
+<rect width="840" height="1108" fill="#ffffff"/>
+<text x="24" y="28" font-size="16" font-weight="bold">longmemeval-s: input cost per request against budget</text>
+<text x="24" y="48" font-size="12" fill="#666666">Dollars of input at the price card of 2026-10-07: cached tokens at the cache-read price, the others</text>
+<text x="24" y="64" font-size="12" fill="#666666">at the 5-minute cache-write price.</text>
+<text x="24" y="80" font-size="12" fill="#666666">Mean over the 102236 requests of the replay. Dashed black line: full, the ceiling.</text>
+<text x="69" y="122" font-size="13" font-weight="bold">Sonnet 5.5</text>
+<text class="tick" x="62" y="418" text-anchor="end" data-axis="y" data-v="0.00">0.00</text>
+<line x1="69" y1="346.5" x2="816" y2="346.5" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="62" y="350.5" text-anchor="end" data-axis="y" data-v="0.02">0.02</text>
+<line x1="69" y1="279" x2="816" y2="279" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="62" y="283" text-anchor="end" data-axis="y" data-v="0.04">0.04</text>
+<line x1="69" y1="211.5" x2="816" y2="211.5" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="62" y="215.5" text-anchor="end" data-axis="y" data-v="0.06">0.06</text>
+<line x1="69" y1="144" x2="816" y2="144" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="62" y="148" text-anchor="end" data-axis="y" data-v="0.08">0.08</text>
+<line x1="193.5" y1="414" x2="193.5" y2="418" stroke="#333333" stroke-width="1"/>
+<text class="tick" x="193.5" y="432" text-anchor="middle" data-axis="x" data-v="8192">8192</text>
+<line x1="442.5" y1="414" x2="442.5" y2="418" stroke="#333333" stroke-width="1"/>
+<text class="tick" x="442.5" y="432" text-anchor="middle" data-axis="x" data-v="32768">32768</text>
+<line x1="691.5" y1="414" x2="691.5" y2="418" stroke="#333333" stroke-width="1"/>
+<text class="tick" x="691.5" y="432" text-anchor="middle" data-axis="x" data-v="65536">65536</text>
+<path class="axis" fill="none" stroke="#333333" stroke-width="1.2" d="M69 144L69 414L816 414"/>
+<text x="442.5" y="454" text-anchor="middle" font-size="12">budget (tokens per request)</text>
+<text x="14" y="279" transform="rotate(-90 14 279)" text-anchor="middle" font-size="12">input cost per request (US dollars)</text>
+<line class="ceiling" x1="69" y1="388.86" x2="816" y2="388.86" stroke="#222222" stroke-width="1.4" stroke-dasharray="5 4"><title>input cost 0.007448446 US dollars per request at Sonnet 5.5</title></line>
+<text x="812" y="383.86" text-anchor="end" font-size="11">full (ceiling) 0.007448446</text>
+<polyline fill="none" stroke="#0072B2" stroke-width="1.6" points="179.5,390.45 428.5,391.02 677.5,386.3"/>
+<g class="pt" transform="translate(179.5 390.45)" data-series="breadcrumbs-ace" data-v="0.006978565"><title>breadcrumbs-ace, budget 8192: input cost 0.006978565 US dollars per request at Sonnet 5.5</title>
+<circle r="4.5" fill="#0072B2"/>
+</g>
+<g class="pt" transform="translate(428.5 391.02)" data-series="breadcrumbs-ace" data-v="0.006808749"><title>breadcrumbs-ace, budget 32768: input cost 0.006808749 US dollars per request at Sonnet 5.5</title>
+<circle r="4.5" fill="#0072B2"/>
+</g>
+<g class="pt" transform="translate(677.5 386.3)" data-series="breadcrumbs-ace" data-v="0.008205931"><title>breadcrumbs-ace, budget 65536: input cost 0.008205931 US dollars per request at Sonnet 5.5</title>
+<circle r="4.5" fill="#0072B2"/>
+</g>
+<polyline fill="none" stroke="#D55E00" stroke-width="1.6" stroke-dasharray="7 3" points="186.5,403.93 435.5,397.7 684.5,392.11"/>
+<g class="pt" transform="translate(186.5 403.93)" data-series="drop" data-v="0.002982442"><title>drop, budget 8192: input cost 0.002982442 US dollars per request at Sonnet 5.5</title>
+<rect x="-4.5" y="-4.5" width="9" height="9" fill="#D55E00"/>
+</g>
+<g class="pt" transform="translate(435.5 397.7)" data-series="drop" data-v="0.004829915"><title>drop, budget 32768: input cost 0.004829915 US dollars per request at Sonnet 5.5</title>
+<rect x="-4.5" y="-4.5" width="9" height="9" fill="#D55E00"/>
+</g>
+<g class="pt" transform="translate(684.5 392.11)" data-series="drop" data-v="0.00648565"><title>drop, budget 65536: input cost 0.00648565 US dollars per request at Sonnet 5.5</title>
+<rect x="-4.5" y="-4.5" width="9" height="9" fill="#D55E00"/>
+</g>
+<polyline fill="none" stroke="#009E73" stroke-width="1.6" stroke-dasharray="2 3" points="193.5,367.77 442.5,262.9 691.5,214.36"/>
+<g class="pt" transform="translate(193.5 367.77)" data-series="langchain-trim" data-v="0.013696358"><title>langchain-trim, budget 8192: input cost 0.013696358 US dollars per request at Sonnet 5.5</title>
+<polygon points="0,-5.62 5.17,4.05 -5.17,4.05" fill="#009E73"/>
+</g>
+<g class="pt" transform="translate(442.5 262.9)" data-series="langchain-trim" data-v="0.044771"><title>langchain-trim, budget 32768: input cost 0.044771 US dollars per request at Sonnet 5.5</title>
+<polygon points="0,-5.62 5.17,4.05 -5.17,4.05" fill="#009E73"/>
+</g>
+<g class="pt" transform="translate(691.5 214.36)" data-series="langchain-trim" data-v="0.059152725"><title>langchain-trim, budget 65536: input cost 0.059152725 US dollars per request at Sonnet 5.5</title>
+<polygon points="0,-5.62 5.17,4.05 -5.17,4.05" fill="#009E73"/>
+</g>
+<polyline fill="none" stroke="#CC79A7" stroke-width="1.6" stroke-dasharray="9 3 2 3" points="200.5,367.77 449.5,263 698.5,214.26"/>
+<g class="pt" transform="translate(200.5 367.77)" data-series="llamaindex-buffer" data-v="0.013699204"><title>llamaindex-buffer, budget 8192: input cost 0.013699204 US dollars per request at Sonnet 5.5</title>
+<polygon points="0,-6.08 6.08,0 0,6.08 -6.08,0" fill="#CC79A7"/>
+</g>
+<g class="pt" transform="translate(449.5 263)" data-series="llamaindex-buffer" data-v="0.044741018"><title>llamaindex-buffer, budget 32768: input cost 0.044741018 US dollars per request at Sonnet 5.5</title>
+<polygon points="0,-6.08 6.08,0 0,6.08 -6.08,0" fill="#CC79A7"/>
+</g>
+<g class="pt" transform="translate(698.5 214.26)" data-series="llamaindex-buffer" data-v="0.059181948"><title>llamaindex-buffer, budget 65536: input cost 0.059181948 US dollars per request at Sonnet 5.5</title>
+<polygon points="0,-6.08 6.08,0 0,6.08 -6.08,0" fill="#CC79A7"/>
+</g>
+<polyline fill="none" stroke="#B8860B" stroke-width="1.6" points="207.5,363.49 456.5,249.59 705.5,197.6"/>
+<g class="pt" transform="translate(207.5 363.49)" data-series="window" data-v="0.014967183"><title>window, budget 8192: input cost 0.014967183 US dollars per request at Sonnet 5.5</title>
+<path d="M-4.5 -4.5L4.5 4.5M-4.5 4.5L4.5 -4.5" fill="none" stroke="#B8860B" stroke-width="2"/>
+</g>
+<g class="pt" transform="translate(456.5 249.59)" data-series="window" data-v="0.048715299"><title>window, budget 32768: input cost 0.048715299 US dollars per request at Sonnet 5.5</title>
+<path d="M-4.5 -4.5L4.5 4.5M-4.5 4.5L4.5 -4.5" fill="none" stroke="#B8860B" stroke-width="2"/>
+</g>
+<g class="pt" transform="translate(705.5 197.6)" data-series="window" data-v="0.064119676"><title>window, budget 65536: input cost 0.064119676 US dollars per request at Sonnet 5.5</title>
+<path d="M-4.5 -4.5L4.5 4.5M-4.5 4.5L4.5 -4.5" fill="none" stroke="#B8860B" stroke-width="2"/>
+</g>
+<text x="52" y="480" font-size="11" font-weight="bold" fill="#666666">engine</text>
+<text x="250" y="480" font-size="11" font-weight="bold" fill="#666666">budget 8192</text>
+<text x="420" y="480" font-size="11" font-weight="bold" fill="#666666">budget 32768</text>
+<text x="590" y="480" font-size="11" font-weight="bold" fill="#666666">budget 65536</text>
+<line x1="24" y1="494" x2="46" y2="494" stroke="#0072B2" stroke-width="1.6"/>
+<g transform="translate(35 494)">
+<circle r="3.5" fill="#0072B2"/>
+</g>
+<text x="52" y="498">breadcrumbs-ace</text>
+<text x="250" y="498">0.006978565</text>
+<text x="420" y="498">0.006808749</text>
+<text x="590" y="498">0.008205931</text>
+<line x1="24" y1="512" x2="46" y2="512" stroke="#D55E00" stroke-width="1.6" stroke-dasharray="7 3"/>
+<g transform="translate(35 512)">
+<rect x="-3.5" y="-3.5" width="7" height="7" fill="#D55E00"/>
+</g>
+<text x="52" y="516">drop</text>
+<text x="250" y="516">0.002982442</text>
+<text x="420" y="516">0.004829915</text>
+<text x="590" y="516">0.00648565</text>
+<line x1="24" y1="530" x2="46" y2="530" stroke="#009E73" stroke-width="1.6" stroke-dasharray="2 3"/>
+<g transform="translate(35 530)">
+<polygon points="0,-4.38 4.02,3.15 -4.02,3.15" fill="#009E73"/>
+</g>
+<text x="52" y="534">langchain-trim</text>
+<text x="250" y="534">0.013696358</text>
+<text x="420" y="534">0.044771</text>
+<text x="590" y="534">0.059152725</text>
+<line x1="24" y1="548" x2="46" y2="548" stroke="#CC79A7" stroke-width="1.6" stroke-dasharray="9 3 2 3"/>
+<g transform="translate(35 548)">
+<polygon points="0,-4.73 4.73,0 0,4.73 -4.73,0" fill="#CC79A7"/>
+</g>
+<text x="52" y="552">llamaindex-buffer</text>
+<text x="250" y="552">0.013699204</text>
+<text x="420" y="552">0.044741018</text>
+<text x="590" y="552">0.059181948</text>
+<line x1="24" y1="566" x2="46" y2="566" stroke="#B8860B" stroke-width="1.6"/>
+<g transform="translate(35 566)">
+<path d="M-3.5 -3.5L3.5 3.5M-3.5 3.5L3.5 -3.5" fill="none" stroke="#B8860B" stroke-width="2"/>
+</g>
+<text x="52" y="570">window</text>
+<text x="250" y="570">0.014967183</text>
+<text x="420" y="570">0.048715299</text>
+<text x="590" y="570">0.064119676</text>
+<line x1="24" y1="584" x2="46" y2="584" stroke="#222222" stroke-width="1.6" stroke-dasharray="5 4"/>
+<g transform="translate(35 584)">
+<polygon points="0,-4.73 4.73,0 0,4.73 -4.73,0" fill="#222222"/>
+</g>
+<text x="52" y="588">full (ceiling)</text>
+<text x="250" y="588">0.007448446</text>
+<text x="420" y="588">0.007448446</text>
+<text x="590" y="588">0.007448446</text>
+<text x="69" y="612" font-size="13" font-weight="bold">Haiku 5.5</text>
+<text class="tick" x="62" y="908" text-anchor="end" data-axis="y" data-v="0.000">0.000</text>
+<line x1="69" y1="836.5" x2="816" y2="836.5" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="62" y="840.5" text-anchor="end" data-axis="y" data-v="0.001">0.001</text>
+<line x1="69" y1="769" x2="816" y2="769" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="62" y="773" text-anchor="end" data-axis="y" data-v="0.002">0.002</text>
+<line x1="69" y1="701.5" x2="816" y2="701.5" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="62" y="705.5" text-anchor="end" data-axis="y" data-v="0.003">0.003</text>
+<line x1="69" y1="634" x2="816" y2="634" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="62" y="638" text-anchor="end" data-axis="y" data-v="0.004">0.004</text>
+<line x1="193.5" y1="904" x2="193.5" y2="908" stroke="#333333" stroke-width="1"/>
+<text class="tick" x="193.5" y="922" text-anchor="middle" data-axis="x" data-v="8192">8192</text>
+<line x1="442.5" y1="904" x2="442.5" y2="908" stroke="#333333" stroke-width="1"/>
+<text class="tick" x="442.5" y="922" text-anchor="middle" data-axis="x" data-v="32768">32768</text>
+<line x1="691.5" y1="904" x2="691.5" y2="908" stroke="#333333" stroke-width="1"/>
+<text class="tick" x="691.5" y="922" text-anchor="middle" data-axis="x" data-v="65536">65536</text>
+<path class="axis" fill="none" stroke="#333333" stroke-width="1.2" d="M69 634L69 904L816 904"/>
+<text x="442.5" y="944" text-anchor="middle" font-size="12">budget (tokens per request)</text>
+<text x="14" y="769" transform="rotate(-90 14 769)" text-anchor="middle" font-size="12">input cost per request (US dollars)</text>
+<line class="ceiling" x1="69" y1="795.04" x2="816" y2="795.04" stroke="#222222" stroke-width="1.4" stroke-dasharray="5 4"><title>input cost 0.001614287 US dollars per request at Haiku 5.5</title></line>
+<text x="812" y="790.04" text-anchor="end" font-size="11">full (ceiling) 0.001614287</text>
+<polyline fill="none" stroke="#0072B2" stroke-width="1.6" points="179.5,878.89 428.5,873 677.5,861.69"/>
+<g class="pt" transform="translate(179.5 878.89)" data-series="breadcrumbs-ace" data-v="0.000372057"><title>breadcrumbs-ace, budget 8192: input cost 0.000372057 US dollars per request at Haiku 5.5</title>
+<circle r="4.5" fill="#0072B2"/>
+</g>
+<g class="pt" transform="translate(428.5 873)" data-series="breadcrumbs-ace" data-v="0.000459252"><title>breadcrumbs-ace, budget 32768: input cost 0.000459252 US dollars per request at Haiku 5.5</title>
+<circle r="4.5" fill="#0072B2"/>
+</g>
+<g class="pt" transform="translate(677.5 861.69)" data-series="breadcrumbs-ace" data-v="0.00062685"><title>breadcrumbs-ace, budget 65536: input cost 0.00062685 US dollars per request at Haiku 5.5</title>
+<circle r="4.5" fill="#0072B2"/>
+</g>
+<polyline fill="none" stroke="#D55E00" stroke-width="1.6" stroke-dasharray="7 3" points="186.5,892.22 435.5,880.23 684.5,868.46"/>
+<g class="pt" transform="translate(186.5 892.22)" data-series="drop" data-v="0.000174493"><title>drop, budget 8192: input cost 0.000174493 US dollars per request at Haiku 5.5</title>
+<rect x="-4.5" y="-4.5" width="9" height="9" fill="#D55E00"/>
+</g>
+<g class="pt" transform="translate(435.5 880.23)" data-series="drop" data-v="0.000352218"><title>drop, budget 32768: input cost 0.000352218 US dollars per request at Haiku 5.5</title>
+<rect x="-4.5" y="-4.5" width="9" height="9" fill="#D55E00"/>
+</g>
+<g class="pt" transform="translate(684.5 868.46)" data-series="drop" data-v="0.000526585"><title>drop, budget 65536: input cost 0.000526585 US dollars per request at Haiku 5.5</title>
+<rect x="-4.5" y="-4.5" width="9" height="9" fill="#D55E00"/>
+</g>
+<polyline fill="none" stroke="#009E73" stroke-width="1.6" stroke-dasharray="2 3" points="193.5,857.03 442.5,749.3 691.5,695.78"/>
+<g class="pt" transform="translate(193.5 857.03)" data-series="langchain-trim" data-v="0.000695812"><title>langchain-trim, budget 8192: input cost 0.000695812 US dollars per request at Haiku 5.5</title>
+<polygon points="0,-5.62 5.17,4.05 -5.17,4.05" fill="#009E73"/>
+</g>
+<g class="pt" transform="translate(442.5 749.3)" data-series="langchain-trim" data-v="0.002291832"><title>langchain-trim, budget 32768: input cost 0.002291832 US dollars per request at Haiku 5.5</title>
+<polygon points="0,-5.62 5.17,4.05 -5.17,4.05" fill="#009E73"/>
+</g>
+<g class="pt" transform="translate(691.5 695.78)" data-series="langchain-trim" data-v="0.003084675"><title>langchain-trim, budget 65536: input cost 0.003084675 US dollars per request at Haiku 5.5</title>
+<polygon points="0,-5.62 5.17,4.05 -5.17,4.05" fill="#009E73"/>
+</g>
+<polyline fill="none" stroke="#CC79A7" stroke-width="1.6" stroke-dasharray="9 3 2 3" points="200.5,857.02 449.5,749.4 698.5,695.69"/>
+<g class="pt" transform="translate(200.5 857.02)" data-series="llamaindex-buffer" data-v="0.00069593"><title>llamaindex-buffer, budget 8192: input cost 0.00069593 US dollars per request at Haiku 5.5</title>
+<polygon points="0,-6.08 6.08,0 0,6.08 -6.08,0" fill="#CC79A7"/>
+</g>
+<g class="pt" transform="translate(449.5 749.4)" data-series="llamaindex-buffer" data-v="0.002290352"><title>llamaindex-buffer, budget 32768: input cost 0.002290352 US dollars per request at Haiku 5.5</title>
+<polygon points="0,-6.08 6.08,0 0,6.08 -6.08,0" fill="#CC79A7"/>
+</g>
+<g class="pt" transform="translate(698.5 695.69)" data-series="llamaindex-buffer" data-v="0.003086076"><title>llamaindex-buffer, budget 65536: input cost 0.003086076 US dollars per request at Haiku 5.5</title>
+<polygon points="0,-6.08 6.08,0 0,6.08 -6.08,0" fill="#CC79A7"/>
+</g>
+<polyline fill="none" stroke="#B8860B" stroke-width="1.6" points="207.5,852.9 456.5,736.52 705.5,679.7"/>
+<g class="pt" transform="translate(207.5 852.9)" data-series="window" data-v="0.00075705"><title>window, budget 8192: input cost 0.00075705 US dollars per request at Haiku 5.5</title>
+<path d="M-4.5 -4.5L4.5 4.5M-4.5 4.5L4.5 -4.5" fill="none" stroke="#B8860B" stroke-width="2"/>
+</g>
+<g class="pt" transform="translate(456.5 736.52)" data-series="window" data-v="0.002481167"><title>window, budget 32768: input cost 0.002481167 US dollars per request at Haiku 5.5</title>
+<path d="M-4.5 -4.5L4.5 4.5M-4.5 4.5L4.5 -4.5" fill="none" stroke="#B8860B" stroke-width="2"/>
+</g>
+<g class="pt" transform="translate(705.5 679.7)" data-series="window" data-v="0.003323"><title>window, budget 65536: input cost 0.003323 US dollars per request at Haiku 5.5</title>
+<path d="M-4.5 -4.5L4.5 4.5M-4.5 4.5L4.5 -4.5" fill="none" stroke="#B8860B" stroke-width="2"/>
+</g>
+<text x="52" y="970" font-size="11" font-weight="bold" fill="#666666">engine</text>
+<text x="250" y="970" font-size="11" font-weight="bold" fill="#666666">budget 8192</text>
+<text x="420" y="970" font-size="11" font-weight="bold" fill="#666666">budget 32768</text>
+<text x="590" y="970" font-size="11" font-weight="bold" fill="#666666">budget 65536</text>
+<line x1="24" y1="984" x2="46" y2="984" stroke="#0072B2" stroke-width="1.6"/>
+<g transform="translate(35 984)">
+<circle r="3.5" fill="#0072B2"/>
+</g>
+<text x="52" y="988">breadcrumbs-ace</text>
+<text x="250" y="988">0.000372057</text>
+<text x="420" y="988">0.000459252</text>
+<text x="590" y="988">0.00062685</text>
+<line x1="24" y1="1002" x2="46" y2="1002" stroke="#D55E00" stroke-width="1.6" stroke-dasharray="7 3"/>
+<g transform="translate(35 1002)">
+<rect x="-3.5" y="-3.5" width="7" height="7" fill="#D55E00"/>
+</g>
+<text x="52" y="1006">drop</text>
+<text x="250" y="1006">0.000174493</text>
+<text x="420" y="1006">0.000352218</text>
+<text x="590" y="1006">0.000526585</text>
+<line x1="24" y1="1020" x2="46" y2="1020" stroke="#009E73" stroke-width="1.6" stroke-dasharray="2 3"/>
+<g transform="translate(35 1020)">
+<polygon points="0,-4.38 4.02,3.15 -4.02,3.15" fill="#009E73"/>
+</g>
+<text x="52" y="1024">langchain-trim</text>
+<text x="250" y="1024">0.000695812</text>
+<text x="420" y="1024">0.002291832</text>
+<text x="590" y="1024">0.003084675</text>
+<line x1="24" y1="1038" x2="46" y2="1038" stroke="#CC79A7" stroke-width="1.6" stroke-dasharray="9 3 2 3"/>
+<g transform="translate(35 1038)">
+<polygon points="0,-4.73 4.73,0 0,4.73 -4.73,0" fill="#CC79A7"/>
+</g>
+<text x="52" y="1042">llamaindex-buffer</text>
+<text x="250" y="1042">0.00069593</text>
+<text x="420" y="1042">0.002290352</text>
+<text x="590" y="1042">0.003086076</text>
+<line x1="24" y1="1056" x2="46" y2="1056" stroke="#B8860B" stroke-width="1.6"/>
+<g transform="translate(35 1056)">
+<path d="M-3.5 -3.5L3.5 3.5M-3.5 3.5L3.5 -3.5" fill="none" stroke="#B8860B" stroke-width="2"/>
+</g>
+<text x="52" y="1060">window</text>
+<text x="250" y="1060">0.00075705</text>
+<text x="420" y="1060">0.002481167</text>
+<text x="590" y="1060">0.003323</text>
+<line x1="24" y1="1074" x2="46" y2="1074" stroke="#222222" stroke-width="1.6" stroke-dasharray="5 4"/>
+<g transform="translate(35 1074)">
+<polygon points="0,-4.73 4.73,0 0,4.73 -4.73,0" fill="#222222"/>
+</g>
+<text x="52" y="1078">full (ceiling)</text>
+<text x="250" y="1078">0.001614287</text>
+<text x="420" y="1078">0.001614287</text>
+<text x="590" y="1078">0.001614287</text>
+</svg>

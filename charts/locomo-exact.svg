@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="600" viewBox="0 0 840 600" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#222222">
+<title>locomo: exact against budget</title>
+<rect width="840" height="600" fill="#ffffff"/>
+<text x="24" y="28" font-size="16" font-weight="bold">locomo: exact against budget</text>
+<text x="24" y="48" font-size="12" fill="#666666">1981 questions in 10 chats. Mark: exact, the mean over the questions. Bar: 95% interval of the mean</text>
+<text x="24" y="64" font-size="12" fill="#666666">(± 1.96 sd/√n).</text>
+<text x="24" y="80" font-size="12" fill="#666666">Dashed black line: full, the ceiling that sends the whole chat.</text>
+<text class="tick" x="48" y="400" text-anchor="end" data-axis="y" data-v="0.0">0.0</text>
+<line x1="55" y1="342" x2="816" y2="342" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="48" y="346" text-anchor="end" data-axis="y" data-v="0.2">0.2</text>
+<line x1="55" y1="288" x2="816" y2="288" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="48" y="292" text-anchor="end" data-axis="y" data-v="0.4">0.4</text>
+<line x1="55" y1="234" x2="816" y2="234" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="48" y="238" text-anchor="end" data-axis="y" data-v="0.6">0.6</text>
+<line x1="55" y1="180" x2="816" y2="180" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="48" y="184" text-anchor="end" data-axis="y" data-v="0.8">0.8</text>
+<line x1="55" y1="126" x2="816" y2="126" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="48" y="130" text-anchor="end" data-axis="y" data-v="1.0">1.0</text>
+<line x1="181.83" y1="396" x2="181.83" y2="400" stroke="#333333" stroke-width="1"/>
+<text class="tick" x="181.83" y="414" text-anchor="middle" data-axis="x" data-v="4096">4096</text>
+<line x1="435.5" y1="396" x2="435.5" y2="400" stroke="#333333" stroke-width="1"/>
+<text class="tick" x="435.5" y="414" text-anchor="middle" data-axis="x" data-v="8192">8192</text>
+<line x1="689.17" y1="396" x2="689.17" y2="400" stroke="#333333" stroke-width="1"/>
+<text class="tick" x="689.17" y="414" text-anchor="middle" data-axis="x" data-v="16384">16384</text>
+<path class="axis" fill="none" stroke="#333333" stroke-width="1.2" d="M55 126L55 396L816 396"/>
+<text x="435.5" y="436" text-anchor="middle" font-size="12">budget (tokens per request)</text>
+<text x="14" y="261" transform="rotate(-90 14 261)" text-anchor="middle" font-size="12">exact (share of gold turns, 0 to 1)</text>
+<line class="ceiling" x1="55" y1="126" x2="816" y2="126" stroke="#222222" stroke-width="1.4" stroke-dasharray="5 4"><title>exact 1.0, 95% interval 1.0000 to 1.0000 (1981 questions)</title></line>
+<text x="812" y="140" text-anchor="end" font-size="11">full (ceiling) 1.0</text>
+<line class="bar" x1="167.83" y1="363.02" x2="167.83" y2="355.11" stroke="#0072B2" stroke-width="1.4"/>
+<line x1="164.33" y1="363.02" x2="171.33" y2="363.02" stroke="#0072B2" stroke-width="1.4"/>
+<line x1="164.33" y1="355.11" x2="171.33" y2="355.11" stroke="#0072B2" stroke-width="1.4"/>
+<line class="bar" x1="421.5" y1="322.24" x2="421.5" y2="311.81" stroke="#0072B2" stroke-width="1.4"/>
+<line x1="418" y1="322.24" x2="425" y2="322.24" stroke="#0072B2" stroke-width="1.4"/>
+<line x1="418" y1="311.81" x2="425" y2="311.81" stroke="#0072B2" stroke-width="1.4"/>
+<line class="bar" x1="675.17" y1="246.67" x2="675.17" y2="235.43" stroke="#0072B2" stroke-width="1.4"/>
+<line x1="671.67" y1="246.67" x2="678.67" y2="246.67" stroke="#0072B2" stroke-width="1.4"/>
+<line x1="671.67" y1="235.43" x2="678.67" y2="235.43" stroke="#0072B2" stroke-width="1.4"/>
+<polyline fill="none" stroke="#0072B2" stroke-width="1.6" points="167.83,359.06 421.5,317.02 675.17,241.05"/>
+<g class="pt" transform="translate(167.83 359.06)" data-series="breadcrumbs-ace" data-v="0.1368"><title>breadcrumbs-ace, budget 4096: exact 0.1368, 95% interval 0.1221 to 0.1515 (1981 questions)</title>
+<circle r="4.5" fill="#0072B2"/>
+</g>
+<g class="pt" transform="translate(421.5 317.02)" data-series="breadcrumbs-ace" data-v="0.2925"><title>breadcrumbs-ace, budget 8192: exact 0.2925, 95% interval 0.2732 to 0.3118 (1981 questions)</title>
+<circle r="4.5" fill="#0072B2"/>
+</g>
+<g class="pt" transform="translate(675.17 241.05)" data-series="breadcrumbs-ace" data-v="0.5739"><title>breadcrumbs-ace, budget 16384: exact 0.5739, 95% interval 0.5531 to 0.5947 (1981 questions)</title>
+<circle r="4.5" fill="#0072B2"/>
+</g>
+<line class="bar" x1="174.83" y1="365.32" x2="174.83" y2="357.61" stroke="#D55E00" stroke-width="1.4"/>
+<line x1="171.33" y1="365.32" x2="178.33" y2="365.32" stroke="#D55E00" stroke-width="1.4"/>
+<line x1="171.33" y1="357.61" x2="178.33" y2="357.61" stroke="#D55E00" stroke-width="1.4"/>
+<line class="bar" x1="428.5" y1="331.07" x2="428.5" y2="321.02" stroke="#D55E00" stroke-width="1.4"/>
+<line x1="425" y1="331.07" x2="432" y2="331.07" stroke="#D55E00" stroke-width="1.4"/>
+<line x1="425" y1="321.02" x2="432" y2="321.02" stroke="#D55E00" stroke-width="1.4"/>
+<line class="bar" x1="682.17" y1="255.62" x2="682.17" y2="244.29" stroke="#D55E00" stroke-width="1.4"/>
+<line x1="678.67" y1="255.62" x2="685.67" y2="255.62" stroke="#D55E00" stroke-width="1.4"/>
+<line x1="678.67" y1="244.29" x2="685.67" y2="244.29" stroke="#D55E00" stroke-width="1.4"/>
+<polyline fill="none" stroke="#D55E00" stroke-width="1.6" stroke-dasharray="7 3" points="174.83,361.47 428.5,326.04 682.17,249.96"/>
+<g class="pt" transform="translate(174.83 361.47)" data-series="drop" data-v="0.1279"><title>drop, budget 4096: exact 0.1279, 95% interval 0.1136 to 0.1422 (1981 questions)</title>
+<rect x="-4.5" y="-4.5" width="9" height="9" fill="#D55E00"/>
+</g>
+<g class="pt" transform="translate(428.5 326.04)" data-series="drop" data-v="0.2591"><title>drop, budget 8192: exact 0.2591, 95% interval 0.2405 to 0.2777 (1981 questions)</title>
+<rect x="-4.5" y="-4.5" width="9" height="9" fill="#D55E00"/>
+</g>
+<g class="pt" transform="translate(682.17 249.96)" data-series="drop" data-v="0.5409"><title>drop, budget 16384: exact 0.5409, 95% interval 0.5199 to 0.5619 (1981 questions)</title>
+<rect x="-4.5" y="-4.5" width="9" height="9" fill="#D55E00"/>
+</g>
+<line class="bar" x1="181.83" y1="354.07" x2="181.83" y2="345.43" stroke="#009E73" stroke-width="1.4"/>
+<line x1="178.33" y1="354.07" x2="185.33" y2="354.07" stroke="#009E73" stroke-width="1.4"/>
+<line x1="178.33" y1="345.43" x2="185.33" y2="345.43" stroke="#009E73" stroke-width="1.4"/>
+<line class="bar" x1="435.5" y1="308.2" x2="435.5" y2="297.34" stroke="#009E73" stroke-width="1.4"/>
+<line x1="432" y1="308.2" x2="439" y2="308.2" stroke="#009E73" stroke-width="1.4"/>
+<line x1="432" y1="297.34" x2="439" y2="297.34" stroke="#009E73" stroke-width="1.4"/>
+<line class="bar" x1="689.17" y1="219.57" x2="689.17" y2="208.9" stroke="#009E73" stroke-width="1.4"/>
+<line x1="685.67" y1="219.57" x2="692.67" y2="219.57" stroke="#009E73" stroke-width="1.4"/>
+<line x1="685.67" y1="208.9" x2="692.67" y2="208.9" stroke="#009E73" stroke-width="1.4"/>
+<polyline fill="none" stroke="#009E73" stroke-width="1.6" stroke-dasharray="2 3" points="181.83,349.75 435.5,302.77 689.17,214.24"/>
+<g class="pt" transform="translate(181.83 349.75)" data-series="langchain-trim" data-v="0.1713"><title>langchain-trim, budget 4096: exact 0.1713, 95% interval 0.1553 to 0.1873 (1981 questions)</title>
+<polygon points="0,-5.62 5.17,4.05 -5.17,4.05" fill="#009E73"/>
+</g>
+<g class="pt" transform="translate(435.5 302.77)" data-series="langchain-trim" data-v="0.3453"><title>langchain-trim, budget 8192: exact 0.3453, 95% interval 0.3252 to 0.3654 (1981 questions)</title>
+<polygon points="0,-5.62 5.17,4.05 -5.17,4.05" fill="#009E73"/>
+</g>
+<g class="pt" transform="translate(689.17 214.24)" data-series="langchain-trim" data-v="0.6732"><title>langchain-trim, budget 16384: exact 0.6732, 95% interval 0.6534 to 0.6930 (1981 questions)</title>
+<polygon points="0,-5.62 5.17,4.05 -5.17,4.05" fill="#009E73"/>
+</g>
+<line class="bar" x1="188.83" y1="354.44" x2="188.83" y2="345.81" stroke="#CC79A7" stroke-width="1.4"/>
+<line x1="185.33" y1="354.44" x2="192.33" y2="354.44" stroke="#CC79A7" stroke-width="1.4"/>
+<line x1="185.33" y1="345.81" x2="192.33" y2="345.81" stroke="#CC79A7" stroke-width="1.4"/>
+<line class="bar" x1="442.5" y1="308.68" x2="442.5" y2="297.83" stroke="#CC79A7" stroke-width="1.4"/>
+<line x1="439" y1="308.68" x2="446" y2="308.68" stroke="#CC79A7" stroke-width="1.4"/>
+<line x1="439" y1="297.83" x2="446" y2="297.83" stroke="#CC79A7" stroke-width="1.4"/>
+<line class="bar" x1="696.17" y1="220.58" x2="696.17" y2="209.89" stroke="#CC79A7" stroke-width="1.4"/>
+<line x1="692.67" y1="220.58" x2="699.67" y2="220.58" stroke="#CC79A7" stroke-width="1.4"/>
+<line x1="692.67" y1="209.89" x2="699.67" y2="209.89" stroke="#CC79A7" stroke-width="1.4"/>
+<polyline fill="none" stroke="#CC79A7" stroke-width="1.6" stroke-dasharray="9 3 2 3" points="188.83,350.13 442.5,303.25 696.17,215.24"/>
+<g class="pt" transform="translate(188.83 350.13)" data-series="llamaindex-buffer" data-v="0.1699"><title>llamaindex-buffer, budget 4096: exact 0.1699, 95% interval 0.1539 to 0.1859 (1981 questions)</title>
+<polygon points="0,-6.08 6.08,0 0,6.08 -6.08,0" fill="#CC79A7"/>
+</g>
+<g class="pt" transform="translate(442.5 303.25)" data-series="llamaindex-buffer" data-v="0.3435"><title>llamaindex-buffer, budget 8192: exact 0.3435, 95% interval 0.3234 to 0.3636 (1981 questions)</title>
+<polygon points="0,-6.08 6.08,0 0,6.08 -6.08,0" fill="#CC79A7"/>
+</g>
+<g class="pt" transform="translate(696.17 215.24)" data-series="llamaindex-buffer" data-v="0.6695"><title>llamaindex-buffer, budget 16384: exact 0.6695, 95% interval 0.6497 to 0.6893 (1981 questions)</title>
+<polygon points="0,-6.08 6.08,0 0,6.08 -6.08,0" fill="#CC79A7"/>
+</g>
+<line class="bar" x1="195.83" y1="353.4" x2="195.83" y2="344.7" stroke="#B8860B" stroke-width="1.4"/>
+<line x1="192.33" y1="353.4" x2="199.33" y2="353.4" stroke="#B8860B" stroke-width="1.4"/>
+<line x1="192.33" y1="344.7" x2="199.33" y2="344.7" stroke="#B8860B" stroke-width="1.4"/>
+<line class="bar" x1="449.5" y1="308.12" x2="449.5" y2="297.25" stroke="#B8860B" stroke-width="1.4"/>
+<line x1="446" y1="308.12" x2="453" y2="308.12" stroke="#B8860B" stroke-width="1.4"/>
+<line x1="446" y1="297.25" x2="453" y2="297.25" stroke="#B8860B" stroke-width="1.4"/>
+<line class="bar" x1="703.17" y1="219.57" x2="703.17" y2="208.9" stroke="#B8860B" stroke-width="1.4"/>
+<line x1="699.67" y1="219.57" x2="706.67" y2="219.57" stroke="#B8860B" stroke-width="1.4"/>
+<line x1="699.67" y1="208.9" x2="706.67" y2="208.9" stroke="#B8860B" stroke-width="1.4"/>
+<polyline fill="none" stroke="#B8860B" stroke-width="1.6" points="195.83,349.05 449.5,302.69 703.17,214.24"/>
+<g class="pt" transform="translate(195.83 349.05)" data-series="window" data-v="0.1739"><title>window, budget 4096: exact 0.1739, 95% interval 0.1578 to 0.1900 (1981 questions)</title>
+<path d="M-4.5 -4.5L4.5 4.5M-4.5 4.5L4.5 -4.5" fill="none" stroke="#B8860B" stroke-width="2"/>
+</g>
+<g class="pt" transform="translate(449.5 302.69)" data-series="window" data-v="0.3456"><title>window, budget 8192: exact 0.3456, 95% interval 0.3255 to 0.3657 (1981 questions)</title>
+<path d="M-4.5 -4.5L4.5 4.5M-4.5 4.5L4.5 -4.5" fill="none" stroke="#B8860B" stroke-width="2"/>
+</g>
+<g class="pt" transform="translate(703.17 214.24)" data-series="window" data-v="0.6732"><title>window, budget 16384: exact 0.6732, 95% interval 0.6534 to 0.6930 (1981 questions)</title>
+<path d="M-4.5 -4.5L4.5 4.5M-4.5 4.5L4.5 -4.5" fill="none" stroke="#B8860B" stroke-width="2"/>
+</g>
+<text x="52" y="462" font-size="11" font-weight="bold" fill="#666666">engine</text>
+<text x="250" y="462" font-size="11" font-weight="bold" fill="#666666">budget 4096</text>
+<text x="420" y="462" font-size="11" font-weight="bold" fill="#666666">budget 8192</text>
+<text x="590" y="462" font-size="11" font-weight="bold" fill="#666666">budget 16384</text>
+<line x1="24" y1="476" x2="46" y2="476" stroke="#0072B2" stroke-width="1.6"/>
+<g transform="translate(35 476)">
+<circle r="3.5" fill="#0072B2"/>
+</g>
+<text x="52" y="480">breadcrumbs-ace</text>
+<text x="250" y="480">0.1368 ±0.0147</text>
+<text x="420" y="480">0.2925 ±0.0193</text>
+<text x="590" y="480">0.5739 ±0.0208</text>
+<line x1="24" y1="494" x2="46" y2="494" stroke="#D55E00" stroke-width="1.6" stroke-dasharray="7 3"/>
+<g transform="translate(35 494)">
+<rect x="-3.5" y="-3.5" width="7" height="7" fill="#D55E00"/>
+</g>
+<text x="52" y="498">drop</text>
+<text x="250" y="498">0.1279 ±0.0143</text>
+<text x="420" y="498">0.2591 ±0.0186</text>
+<text x="590" y="498">0.5409 ±0.0210</text>
+<line x1="24" y1="512" x2="46" y2="512" stroke="#009E73" stroke-width="1.6" stroke-dasharray="2 3"/>
+<g transform="translate(35 512)">
+<polygon points="0,-4.38 4.02,3.15 -4.02,3.15" fill="#009E73"/>
+</g>
+<text x="52" y="516">langchain-trim</text>
+<text x="250" y="516">0.1713 ±0.0160</text>
+<text x="420" y="516">0.3453 ±0.0201</text>
+<text x="590" y="516">0.6732 ±0.0198</text>
+<line x1="24" y1="530" x2="46" y2="530" stroke="#CC79A7" stroke-width="1.6" stroke-dasharray="9 3 2 3"/>
+<g transform="translate(35 530)">
+<polygon points="0,-4.73 4.73,0 0,4.73 -4.73,0" fill="#CC79A7"/>
+</g>
+<text x="52" y="534">llamaindex-buffer</text>
+<text x="250" y="534">0.1699 ±0.0160</text>
+<text x="420" y="534">0.3435 ±0.0201</text>
+<text x="590" y="534">0.6695 ±0.0198</text>
+<line x1="24" y1="548" x2="46" y2="548" stroke="#B8860B" stroke-width="1.6"/>
+<g transform="translate(35 548)">
+<path d="M-3.5 -3.5L3.5 3.5M-3.5 3.5L3.5 -3.5" fill="none" stroke="#B8860B" stroke-width="2"/>
+</g>
+<text x="52" y="552">window</text>
+<text x="250" y="552">0.1739 ±0.0161</text>
+<text x="420" y="552">0.3456 ±0.0201</text>
+<text x="590" y="552">0.6732 ±0.0198</text>
+<line x1="24" y1="566" x2="46" y2="566" stroke="#222222" stroke-width="1.6" stroke-dasharray="5 4"/>
+<g transform="translate(35 566)">
+<polygon points="0,-4.73 4.73,0 0,4.73 -4.73,0" fill="#222222"/>
+</g>
+<text x="52" y="570">full (ceiling)</text>
+<text x="250" y="570">1.0 ±0.0000</text>
+<text x="420" y="570">1.0 ±0.0000</text>
+<text x="590" y="570">1.0 ±0.0000</text>
+</svg>
