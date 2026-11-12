@@ -85,7 +85,7 @@ class TestRender(unittest.TestCase):
         other_chats = make_record("b", ones(6, 10), chat_set="8" * 64)
         self.assertEqual(render(a, other_chats).count("## s, budget"), 2)
         other_source = make_record("b", ones(6, 10), source="t")
-        self.assertEqual(render(a, other_source).count("## "), 2)
+        self.assertEqual(sum(x.startswith("## ") for x in render(a, other_source).splitlines()), 2)
         other_protocol = make_record("b", ones(6, 10), protocol="context-bench/2")
         self.assertEqual(render(a, other_protocol).count("## s, budget"), 2)
 

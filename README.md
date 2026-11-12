@@ -131,6 +131,32 @@ budget, the question set and the chat set are the same. `full` is the ceiling ro
 run of a licensed engine shows numbers only with a `publication` grant in its manifest; without one, the record goes
 to `results/private/` (git ignores it) and `board --private` reads it.
 
+## Charts
+
+`python -m contextbench plot results/public --out charts/` writes the charts as plain SVG text. It reads the run records
+and nothing else, and it needs no plotting library. The bytes depend on the records only (one number format, sorted
+series, no date), so a rebuild gives the same files and a gate can compare them. `BOARD.md` shows the charts of a source
+under its tables. `--private` also charts the runs that the board withholds.
+
+| File | Shows |
+|---|---|
+| `charts/<source>-exact.svg` | exact against budget: a line for each engine, the 95% interval of the mean at each point (mean ± 1.96 sd/√n), `full` as a dashed ceiling |
+| `charts/<source>-cost.svg` | input cost per request in dollars against budget: a panel at Sonnet 5.5 and a panel at Haiku 5.5 |
+| `charts/<source>-tradeoff.svg` | exact against dollars per request at Sonnet 5.5: a mark for each engine and budget, `full` as the ceiling mark |
+| `charts/<source>-cache.svg` | cache reuse against budget |
+| `charts/<source>-trace.svg` | the tokens of each request of one chat (the first by id), in order: a panel for each budget, a line for each engine. `drop` and ACE fold in a sawtooth, `window` stays at its cap, and `full` leaves the scale (a note says where) |
+
+A source without questions (codex-sessions) has the cost, cache and trace charts only.
+
+Every chart follows five rules. Each measured axis is linear and starts at zero, at the bottom and at the left. The budget
+axis has equal steps and is labeled with the budget values (the budgets double; the steps do not). Each axis label names
+its unit. Each point carries its number from the record, in its SVG `<title>` (a tooltip) and in the table under the plot
+(visible where GitHub shows the SVG as an image). The tests check them: a golden file, the labels against the record, the
+zero of each axis, the equal steps, the 1.96 of the bars.
+
+The trace chart needs one more field in the record. Each run keeps `trace`: the tokens of each request of the first chat
+by id, on one line. The harness counts it as it counts every request, and it changes no other number.
+
 ## The rules: apples to apples
 
 1. **Same bytes.** Every run reads the pinned file.
@@ -194,7 +220,8 @@ of an engine that folds, so that each question sees the end-of-chat state. `stat
 3. Port the working settings from the engine's own docs. Do not tune them on a source of the board.
 4. Run `python -m contextbench fetch engines/<name> --venv DIR`, then run the engine with `DIR/bin/python -m
    contextbench run …` and write the record to `results/public/<source>-<name>.json`.
-5. `python -m contextbench board results/public --out BOARD.md`, and the tests.
+5. `python -m contextbench board results/public --out BOARD.md`, `python -m contextbench plot results/public --out charts`,
+   and the tests.
 
 **Open-source donors** open a pull request with the three files. The maintainers run the engine at the pinned
 version and commit the run record. Anyone can run it again with the same command. **Licensed donors** (the vendor or a
@@ -251,6 +278,41 @@ of the maintainers). kali was not reachable when this board was written.
 - The data of `codex-sessions` is one developer's sessions with one agent. It shows how engines cut real tool
   sessions, not how any engine would have steered them.
 
+## Port check against `ace_bench`
+
+The ports were checked against `ace_bench`'s record of Nov 9 2026 (bench/results/ace-bench.json of the private repository).
+On LoCoMo (4096, 8192, 16384) and LongMemEval-S (8192, 32768, 65536, 419 questions), `full`, `window` and `drop` on this
+harness equal the old numbers in every figure that both print: exact, words, context tokens, cache_reuse, cost per
+request, requests (2,938 and 102,236), the largest request, and the folds of `drop`. `breadcrumbs-ace` does not, because
+ACE has moved on since Nov 9: master has `FOLD_TO` 0.9 (it was 0.6), the small-target shares for budgets up to
+16,384, the gearbox dials (off by default) and `ace_ceiling` (0 by default). On LoCoMo at 8,192 tokens its exact is now
+0.292 (Nov 9: 0.181); on LongMemEval-S at 32,768 it is 0.380 (0.331). Nothing was tuned to close or open the gap.
+The gap is ACE's change, not the port: `ace_bench` itself, run on the same master ACE (commit 5be1e74), gives the same
+figures as `breadcrumbs-ace` here on LoCoMo at 4,096 and 8,192 tokens (exact 0.1368 and 0.2925, folds 466 and 172, cost
+per request 1105.3 and 1221.0, largest request 4095.75 and 8190.75).
+
+## Reproduce the first board
+
+```
+python -m contextbench fetch sources/locomo --into data
+python -m contextbench fetch sources/longmemeval-s --into data            # 277 MB
+python -m contextbench fetch sources/codex-sessions --into data           # 41 MB
+for e in breadcrumbs-ace langchain-trim llamaindex-buffer; do python -m contextbench fetch engines/$e --venv /tmp/cb-$e; done
+# full, window and drop run with any Python 3.11+; the three others with their own venv (/tmp/cb-<name>/bin/python):
+python -m contextbench run engines/window --source locomo --data data/locomo10.json --budgets 4096 8192 16384 \
+    --runner breadcrumbs-agency --role maintainer --out results/public/locomo-window.json
+python -m contextbench run engines/window --source longmemeval-s --data data/longmemeval_s_cleaned.json --budgets 32768 \
+    --runner breadcrumbs-agency --role maintainer --out results/public/longmemeval-s-window-32768.json
+python -m contextbench run engines/window --source codex-sessions --data data/trajectories.train.jsonl --budgets 32768 \
+    --runner breadcrumbs-agency --role maintainer --out results/public/codex-sessions-window.json
+python -m contextbench board results/public --out BOARD.md
+python -m contextbench plot results/public --out charts
+```
+
+`full` has no budget and runs once for each source (`locomo`, `longmemeval-s`); it is not run on `codex-sessions`. On a
+12-core Mac, `breadcrumbs-ace` takes 8.5 minutes on LongMemEval-S at 32,768 tokens and 5 minutes at 65,536; the others
+take one to five minutes. A run keeps one chat in memory at a time, and the LongMemEval-S file once (about 1 GB).
+
 ## Who keeps the board
 
 breadcrumbs-agency keeps this repository, and it also wrote the `breadcrumbs-ace` entrant and the private bench that
@@ -266,7 +328,8 @@ python tools/mutate.py                        # the mutation pass: one guard str
 
 The mutation pass copies the tree to scratch (without `.git` and `results`), changes one guard string, runs the suite
 and expects it to fail. A mutant that lives needs a test. The gate for a change: clone the repository into scratch,
-run the tests there, run `python -m contextbench board results/public --out fresh.md`, and `cmp fresh.md BOARD.md`.
+run the tests there, run `python -m contextbench board results/public --out fresh.md` and `cmp fresh.md BOARD.md`, then
+`python -m contextbench plot results/public --out fresh-charts` and `diff -r fresh-charts charts`.
 
 ## License
 

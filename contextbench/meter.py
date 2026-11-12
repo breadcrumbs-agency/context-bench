@@ -150,6 +150,7 @@ class Replay:
         self.requests = self.over = self.dropped = 0
         self.tokens = self.cached = self.units = self.excess = self.top = 0.0
         self.usd = dict.fromkeys(card["models"], 0.0)
+        self.series = []  # tokens of each request, in order
 
     def add(self, out, newest):
         """Count one request: out is what the engine sent, newest the last message of the request it got."""
@@ -159,6 +160,7 @@ class Replay:
         size, hit = self.sizer.request(out) / 4, self.sizer.request(out[:n]) / 4
         self.requests += 1
         self.tokens += size
+        self.series.append(size)
         self.cached += hit
         self.units += cost_units(size, hit)
         for name in self.usd:

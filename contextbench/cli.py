@@ -1,4 +1,4 @@
-"""python -m contextbench fetch | run | board"""
+"""python -m contextbench fetch | run | board | plot"""
 
 import argparse
 import datetime
@@ -7,7 +7,7 @@ import os
 import subprocess
 import sys
 
-from contextbench import board, engine, sources
+from contextbench import board, engine, plot, sources
 from contextbench import run as runner
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -19,7 +19,9 @@ def write_record(rec, path):
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
     marks, head = {}, json.loads(json.dumps(rec))
     for i, run in enumerate(head["runs"]):
-        for key in ("chats", "questions"):
+        for key in ("chats", "questions", "trace"):
+            if key not in run:
+                continue  # a record from before the trace
             mark = "@@%s-%d@@" % (key, i)
             lines = ",\n".join("    " + json.dumps(r, ensure_ascii=False, separators=(",", ":")) for r in run[key])
             marks['"%s"' % mark] = "[\n%s\n   ]" % lines if lines else "[]"
@@ -90,6 +92,11 @@ def main(argv=None):
     b.add_argument("--private", action="store_true", help="also read results/private and show withheld runs")
     b.add_argument("--out", help="write the board to this file instead of stdout")
 
+    c = sub.add_parser("plot", help="write the charts of a set of run records as SVG files")
+    c.add_argument("paths", nargs="*", help="record files or folders (default: results/public)")
+    c.add_argument("--private", action="store_true", help="also read results/private and chart withheld runs")
+    c.add_argument("--out", default="charts", help="the folder for the SVG files (default: charts)")
+
     a = ap.parse_args(argv)
     if a.cmd == "fetch":
         if os.path.basename(os.path.dirname(os.path.normpath(a.target))) == "sources" or os.path.exists(
@@ -116,6 +123,13 @@ def main(argv=None):
     paths = a.paths or ["results/public"]
     if a.private and os.path.isdir("results/private"):
         paths.append("results/private")
+    if a.cmd == "plot":
+        files = plot.build(board.load([p for p in paths if os.path.exists(p)]), a.private)
+        if not files:
+            raise SystemExit("no run records with budgets under %s: nothing to chart" % ", ".join(paths))
+        for path in plot.write(files, a.out):
+            print(path)
+        return 0
     text = board.render(board.load([p for p in paths if os.path.exists(p)]), a.private)
     if a.out:
         with open(a.out, "w", encoding="utf-8") as fh:

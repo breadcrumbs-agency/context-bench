@@ -22,6 +22,7 @@ HEAD = ("# Board\n\nWritten by `python -m contextbench board`. Do not edit it by
         "- Cost: per request of the replay, in ace_bench's token units (0.1 per cached token, 1.25 per other "
         "token), and in dollars of input at the dated price card (cached tokens at the cache-read price, the others "
         "at the 5-minute cache-write price).\n"
+        "- Charts: under the tables of each source, made from the same records by `python -m contextbench plot`.\n"
         "- Over budget: the harness does not cut a request. It counts the requests over the budget and the tokens "
         "over it. Newest dropped: requests that did not end with the newest message.\n\n")
 
@@ -128,7 +129,8 @@ def verdicts(names, vals):
     return out
 
 
-def render(runs, private=False):
+def group(runs, private=False):
+    """{base: {"ceiling": [...], "by": {budget: [...]}, "hidden": {budget: {names}}}} of (record, run) pairs."""
     groups = {}
     for rec, run in runs:
         s = rec["source"]
@@ -140,8 +142,17 @@ def render(runs, private=False):
             g["ceiling"].append((rec, run))
         else:
             g["by"].setdefault(run["budget"], []).append((rec, run))
+    return groups
+
+
+def render(runs, private=False):
+    from contextbench import plot  # late: plot reads the board's groups
+    groups = group(runs, private)
+    charts = plot.chart_files(plot.families(groups))
+    order = sorted(groups, key=lambda k: (k[1], k[2], k[3], k[4]))
+    last = {base[1]: base for base in order}
     out = []
-    for base in sorted(groups, key=lambda k: (k[1], k[2], k[3], k[4])):
+    for base in order:
         g = groups[base]
         for budget in sorted(g["by"]) or [None]:
             ceil = _latest(g["ceiling"])
@@ -187,4 +198,8 @@ def render(runs, private=False):
             hidden = sorted(g["hidden"].get(budget, set()) | g["hidden"].get(None, set()))
             if hidden:
                 out += ["Withheld (licensed, no publication grant): %s." % ", ".join(hidden), ""]
+        if last[base[1]] == base and charts.get(base[1]):
+            out += ["### Charts of %s" % base[1], ""]
+            for name, caption in charts[base[1]]:
+                out += ["![%s: %s](%s/%s)" % (base[1], caption, plot.DIR, name), ""]
     return "\n".join(out)

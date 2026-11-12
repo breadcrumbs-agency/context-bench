@@ -74,6 +74,7 @@ class BudgetRun:
     def __init__(self, budget, card):
         self.budget, self.card = budget, card
         self.rows, self.lines, self.times, self.chat_ids = [], [], [], []
+        self.trace = None  # the first chat by id: the tokens of each of its requests (chart e of the board)
         self.t0 = time.perf_counter()
 
     def chat(self, adapter, manifest, chat):
@@ -110,6 +111,8 @@ class BudgetRun:
             finally:
                 eng.close()
         self.chat_ids.append(chat.id)
+        if self.trace is None or chat.id < self.trace["chat"]:
+            self.trace = {"chat": chat.id, "tokens": replay.series}
         self.lines.append({"id": chat.id, "msgs": len(chat.messages), "requests": replay.requests,
                            "tokens": replay.tokens, "cached": replay.cached, "max": replay.top, "over": replay.over,
                            "excess": round(replay.excess, 2), "dropped": replay.dropped,
@@ -149,7 +152,8 @@ class BudgetRun:
         s.update({"select_ms_p50": _pct(self.times, 0.5), "select_ms_p95": _pct(self.times, 0.95),
                   "wall_s": round(time.perf_counter() - self.t0, 1)})
         return {"budget": self.budget, "question_set": hash_ids(r["id"] for r in rows),
-                "chat_set": hash_ids(self.chat_ids), "summary": s, "chats": lines, "questions": rows}
+                "chat_set": hash_ids(self.chat_ids), "summary": s, "chats": lines, "questions": rows,
+                "trace": [self.trace] if self.trace else []}
 
 
 def run(engine_folder, source_folder, data=None, budgets=None, limit=0, runner="unnamed", role="other", card=None,
