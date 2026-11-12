@@ -1,66 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="840" height="530" viewBox="0 0 840 530" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#222222">
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="546" viewBox="0 0 840 546" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#222222">
 <title>toy: cache reuse against budget</title>
-<rect width="840" height="530" fill="#ffffff"/>
+<rect width="840" height="546" fill="#ffffff"/>
 <text x="24" y="28" font-size="16" font-weight="bold">toy: cache reuse against budget</text>
-<text x="24" y="48" font-size="12" fill="#666666">Cache reuse: the share of the request's tokens that sit in the leading messages which the request before also sent.</text>
-<text x="24" y="64" font-size="12" fill="#666666">Dashed black line: full, the ceiling.</text>
-<text class="tick" x="48" y="384" text-anchor="end" data-axis="y" data-v="0.0">0.0</text>
-<line x1="55" y1="326" x2="816" y2="326" stroke="#dddddd" stroke-width="1"/>
-<text class="tick" x="48" y="330" text-anchor="end" data-axis="y" data-v="0.2">0.2</text>
-<line x1="55" y1="272" x2="816" y2="272" stroke="#dddddd" stroke-width="1"/>
-<text class="tick" x="48" y="276" text-anchor="end" data-axis="y" data-v="0.4">0.4</text>
-<line x1="55" y1="218" x2="816" y2="218" stroke="#dddddd" stroke-width="1"/>
-<text class="tick" x="48" y="222" text-anchor="end" data-axis="y" data-v="0.6">0.6</text>
-<line x1="55" y1="164" x2="816" y2="164" stroke="#dddddd" stroke-width="1"/>
-<text class="tick" x="48" y="168" text-anchor="end" data-axis="y" data-v="0.8">0.8</text>
-<line x1="55" y1="110" x2="816" y2="110" stroke="#dddddd" stroke-width="1"/>
-<text class="tick" x="48" y="114" text-anchor="end" data-axis="y" data-v="1.0">1.0</text>
-<line x1="245.25" y1="380" x2="245.25" y2="384" stroke="#333333" stroke-width="1"/>
-<text class="tick" x="245.25" y="398" text-anchor="middle" data-axis="x" data-v="100">100</text>
-<line x1="625.75" y1="380" x2="625.75" y2="384" stroke="#333333" stroke-width="1"/>
-<text class="tick" x="625.75" y="398" text-anchor="middle" data-axis="x" data-v="200">200</text>
-<path class="axis" fill="none" stroke="#333333" stroke-width="1.2" d="M55 110L55 380L816 380"/>
-<text x="435.5" y="420" text-anchor="middle" font-size="12">budget (tokens per request)</text>
-<text x="14" y="245" transform="rotate(-90 14 245)" text-anchor="middle" font-size="12">cache reuse (share of request tokens, 0 to 1)</text>
-<line class="ceiling" x1="55" y1="112.67" x2="816" y2="112.67" stroke="#222222" stroke-width="1.4" stroke-dasharray="5 4"><title>cache reuse 0.9901</title></line>
-<text x="812" y="126.67" text-anchor="end" font-size="11">full (ceiling) 0.9901</text>
-<polyline fill="none" stroke="#0072B2" stroke-width="1.6" points="241.75,241.68 622.25,189.08"/>
-<g class="pt" transform="translate(241.75 241.68)" data-series="alpha" data-v="0.5123"><title>alpha, budget 100: cache reuse 0.5123</title>
+<text x="24" y="48" font-size="12" fill="#666666">Cache reuse: the share of the request's tokens that sit in the leading messages which the request</text>
+<text x="24" y="64" font-size="12" fill="#666666">before also sent.</text>
+<text x="24" y="80" font-size="12" fill="#666666">Dashed black line: full, the ceiling.</text>
+<text class="tick" x="48" y="400" text-anchor="end" data-axis="y" data-v="0.0">0.0</text>
+<line x1="55" y1="342" x2="816" y2="342" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="48" y="346" text-anchor="end" data-axis="y" data-v="0.2">0.2</text>
+<line x1="55" y1="288" x2="816" y2="288" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="48" y="292" text-anchor="end" data-axis="y" data-v="0.4">0.4</text>
+<line x1="55" y1="234" x2="816" y2="234" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="48" y="238" text-anchor="end" data-axis="y" data-v="0.6">0.6</text>
+<line x1="55" y1="180" x2="816" y2="180" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="48" y="184" text-anchor="end" data-axis="y" data-v="0.8">0.8</text>
+<line x1="55" y1="126" x2="816" y2="126" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="48" y="130" text-anchor="end" data-axis="y" data-v="1.0">1.0</text>
+<line x1="245.25" y1="396" x2="245.25" y2="400" stroke="#333333" stroke-width="1"/>
+<text class="tick" x="245.25" y="414" text-anchor="middle" data-axis="x" data-v="100">100</text>
+<line x1="625.75" y1="396" x2="625.75" y2="400" stroke="#333333" stroke-width="1"/>
+<text class="tick" x="625.75" y="414" text-anchor="middle" data-axis="x" data-v="200">200</text>
+<path class="axis" fill="none" stroke="#333333" stroke-width="1.2" d="M55 126L55 396L816 396"/>
+<text x="435.5" y="436" text-anchor="middle" font-size="12">budget (tokens per request)</text>
+<text x="14" y="261" transform="rotate(-90 14 261)" text-anchor="middle" font-size="12">cache reuse (share of request tokens, 0 to 1)</text>
+<line class="ceiling" x1="55" y1="128.67" x2="816" y2="128.67" stroke="#222222" stroke-width="1.4" stroke-dasharray="5 4"><title>cache reuse 0.9901</title></line>
+<text x="812" y="142.67" text-anchor="end" font-size="11">full (ceiling) 0.9901</text>
+<polyline fill="none" stroke="#0072B2" stroke-width="1.6" points="241.75,257.68 622.25,205.08"/>
+<g class="pt" transform="translate(241.75 257.68)" data-series="alpha" data-v="0.5123"><title>alpha, budget 100: cache reuse 0.5123</title>
 <circle r="4.5" fill="#0072B2"/>
 </g>
-<g class="pt" transform="translate(622.25 189.08)" data-series="alpha" data-v="0.7071"><title>alpha, budget 200: cache reuse 0.7071</title>
+<g class="pt" transform="translate(622.25 205.08)" data-series="alpha" data-v="0.7071"><title>alpha, budget 200: cache reuse 0.7071</title>
 <circle r="4.5" fill="#0072B2"/>
 </g>
-<polyline fill="none" stroke="#D55E00" stroke-width="1.6" stroke-dasharray="7 3" points="248.75,326 629.25,290.01"/>
-<g class="pt" transform="translate(248.75 326)" data-series="beta" data-v="0.2"><title>beta, budget 100: cache reuse 0.2</title>
+<polyline fill="none" stroke="#D55E00" stroke-width="1.6" stroke-dasharray="7 3" points="248.75,342 629.25,306.01"/>
+<g class="pt" transform="translate(248.75 342)" data-series="beta" data-v="0.2"><title>beta, budget 100: cache reuse 0.2</title>
 <rect x="-4.5" y="-4.5" width="9" height="9" fill="#D55E00"/>
 </g>
-<g class="pt" transform="translate(629.25 290.01)" data-series="beta" data-v="0.3333"><title>beta, budget 200: cache reuse 0.3333</title>
+<g class="pt" transform="translate(629.25 306.01)" data-series="beta" data-v="0.3333"><title>beta, budget 200: cache reuse 0.3333</title>
 <rect x="-4.5" y="-4.5" width="9" height="9" fill="#D55E00"/>
 </g>
-<text x="52" y="446" font-size="11" font-weight="bold" fill="#666666">engine</text>
-<text x="250" y="446" font-size="11" font-weight="bold" fill="#666666">budget 100</text>
-<text x="420" y="446" font-size="11" font-weight="bold" fill="#666666">budget 200</text>
-<line x1="24" y1="460" x2="46" y2="460" stroke="#0072B2" stroke-width="1.6"/>
-<g transform="translate(35 460)">
+<text x="52" y="462" font-size="11" font-weight="bold" fill="#666666">engine</text>
+<text x="250" y="462" font-size="11" font-weight="bold" fill="#666666">budget 100</text>
+<text x="420" y="462" font-size="11" font-weight="bold" fill="#666666">budget 200</text>
+<line x1="24" y1="476" x2="46" y2="476" stroke="#0072B2" stroke-width="1.6"/>
+<g transform="translate(35 476)">
 <circle r="3.5" fill="#0072B2"/>
 </g>
-<text x="52" y="464">alpha</text>
-<text x="250" y="464">0.5123</text>
-<text x="420" y="464">0.7071</text>
-<line x1="24" y1="478" x2="46" y2="478" stroke="#D55E00" stroke-width="1.6" stroke-dasharray="7 3"/>
-<g transform="translate(35 478)">
+<text x="52" y="480">alpha</text>
+<text x="250" y="480">0.5123</text>
+<text x="420" y="480">0.7071</text>
+<line x1="24" y1="494" x2="46" y2="494" stroke="#D55E00" stroke-width="1.6" stroke-dasharray="7 3"/>
+<g transform="translate(35 494)">
 <rect x="-3.5" y="-3.5" width="7" height="7" fill="#D55E00"/>
 </g>
-<text x="52" y="482">beta</text>
-<text x="250" y="482">0.2</text>
-<text x="420" y="482">0.3333</text>
-<line x1="24" y1="496" x2="46" y2="496" stroke="#222222" stroke-width="1.6" stroke-dasharray="5 4"/>
-<g transform="translate(35 496)">
+<text x="52" y="498">beta</text>
+<text x="250" y="498">0.2</text>
+<text x="420" y="498">0.3333</text>
+<line x1="24" y1="512" x2="46" y2="512" stroke="#222222" stroke-width="1.6" stroke-dasharray="5 4"/>
+<g transform="translate(35 512)">
 <polygon points="0,-4.73 4.73,0 0,4.73 -4.73,0" fill="#222222"/>
 </g>
-<text x="52" y="500">full (ceiling)</text>
-<text x="250" y="500">0.9901</text>
-<text x="420" y="500">0.9901</text>
+<text x="52" y="516">full (ceiling)</text>
+<text x="250" y="516">0.9901</text>
+<text x="420" y="516">0.9901</text>
 </svg>

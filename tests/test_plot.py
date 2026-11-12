@@ -142,6 +142,14 @@ class TestCharts(unittest.TestCase):
             with open(path, "rb") as fh:
                 self.assertEqual(svg.encode("utf-8"), fh.read(), name + " differs from tests/golden")
 
+    def test_a_long_note_wraps_so_that_it_fits_the_canvas(self):
+        for name, svg in self.files.items():
+            for t in parse(svg).iter(NS + "text"):
+                if t.get("font-size") == "12" and t.get("fill") == "#666666":
+                    self.assertLessEqual(len(t.text), 100, name)
+        long_note = plot.heading("t", ["word " * 60])[0]
+        self.assertGreater(long_note.count("<text"), 3)  # the title and more than two lines
+
     def test_the_input_order_does_not_change_the_bytes(self):
         self.assertEqual(plot.build(list(reversed(self.runs))), self.files)
         self.assertEqual(plot.build(self.runs), self.files)

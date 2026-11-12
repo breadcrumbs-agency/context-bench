@@ -1,92 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="840" height="666" viewBox="0 0 840 666" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#222222">
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="682" viewBox="0 0 840 682" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#222222">
 <title>toy: exact against input cost per request</title>
-<rect width="840" height="666" fill="#ffffff"/>
+<rect width="840" height="682" fill="#ffffff"/>
 <text x="24" y="28" font-size="16" font-weight="bold">toy: exact against input cost per request</text>
-<text x="24" y="48" font-size="12" fill="#666666">One mark for each engine and budget; the tag is the budget in tokens. Dashed black line and diamond: full, the ceiling.</text>
-<text x="24" y="64" font-size="12" fill="#666666">Dollars of input at Sonnet 5.5, price card of 2026-10-07.</text>
-<text class="tick" x="48" y="466" text-anchor="end" data-axis="y" data-v="0.0">0.0</text>
-<line x1="55" y1="390" x2="816" y2="390" stroke="#dddddd" stroke-width="1"/>
-<text class="tick" x="48" y="394" text-anchor="end" data-axis="y" data-v="0.2">0.2</text>
-<line x1="55" y1="318" x2="816" y2="318" stroke="#dddddd" stroke-width="1"/>
-<text class="tick" x="48" y="322" text-anchor="end" data-axis="y" data-v="0.4">0.4</text>
-<line x1="55" y1="246" x2="816" y2="246" stroke="#dddddd" stroke-width="1"/>
-<text class="tick" x="48" y="250" text-anchor="end" data-axis="y" data-v="0.6">0.6</text>
-<line x1="55" y1="174" x2="816" y2="174" stroke="#dddddd" stroke-width="1"/>
-<text class="tick" x="48" y="178" text-anchor="end" data-axis="y" data-v="0.8">0.8</text>
-<line x1="55" y1="102" x2="816" y2="102" stroke="#dddddd" stroke-width="1"/>
-<text class="tick" x="48" y="106" text-anchor="end" data-axis="y" data-v="1.0">1.0</text>
-<text class="tick" x="55" y="479" text-anchor="middle" data-axis="x" data-v="0.000">0.000</text>
-<line x1="308.67" y1="102" x2="308.67" y2="462" stroke="#dddddd" stroke-width="1"/>
-<text class="tick" x="308.67" y="479" text-anchor="middle" data-axis="x" data-v="0.005">0.005</text>
-<line x1="562.33" y1="102" x2="562.33" y2="462" stroke="#dddddd" stroke-width="1"/>
-<text class="tick" x="562.33" y="479" text-anchor="middle" data-axis="x" data-v="0.010">0.010</text>
-<line x1="816" y1="102" x2="816" y2="462" stroke="#dddddd" stroke-width="1"/>
-<text class="tick" x="816" y="479" text-anchor="middle" data-axis="x" data-v="0.015">0.015</text>
-<path class="axis" fill="none" stroke="#333333" stroke-width="1.2" d="M55 102L55 462L816 462"/>
-<text x="435.5" y="502" text-anchor="middle" font-size="12">input cost per request at Sonnet 5.5 (US dollars)</text>
-<text x="14" y="282" transform="rotate(-90 14 282)" text-anchor="middle" font-size="12">exact (share of gold turns, 0 to 1)</text>
-<line class="ceiling" x1="55" y1="102" x2="816" y2="102" stroke="#222222" stroke-width="1.4" stroke-dasharray="5 4"><title>full (ceiling): exact 1.0</title></line>
-<polyline fill="none" stroke="#0072B2" stroke-width="1.2" stroke-opacity="0.6" points="74.23,302.02 86.06,232"/>
-<g class="pt" transform="translate(74.23 302.02)" data-series="alpha" data-v="0.4444"><title>alpha, budget 100: exact 0.4444, input cost 0.000379089 US dollars per request at Sonnet 5.5</title>
+<text x="24" y="48" font-size="12" fill="#666666">One mark for each engine and budget; the tag is the budget in tokens. Dashed black line and diamond:</text>
+<text x="24" y="64" font-size="12" fill="#666666">full, the ceiling.</text>
+<text x="24" y="80" font-size="12" fill="#666666">Dollars of input at Sonnet 5.5, price card of 2026-10-07.</text>
+<text class="tick" x="48" y="482" text-anchor="end" data-axis="y" data-v="0.0">0.0</text>
+<line x1="55" y1="406" x2="816" y2="406" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="48" y="410" text-anchor="end" data-axis="y" data-v="0.2">0.2</text>
+<line x1="55" y1="334" x2="816" y2="334" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="48" y="338" text-anchor="end" data-axis="y" data-v="0.4">0.4</text>
+<line x1="55" y1="262" x2="816" y2="262" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="48" y="266" text-anchor="end" data-axis="y" data-v="0.6">0.6</text>
+<line x1="55" y1="190" x2="816" y2="190" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="48" y="194" text-anchor="end" data-axis="y" data-v="0.8">0.8</text>
+<line x1="55" y1="118" x2="816" y2="118" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="48" y="122" text-anchor="end" data-axis="y" data-v="1.0">1.0</text>
+<text class="tick" x="55" y="495" text-anchor="middle" data-axis="x" data-v="0.000">0.000</text>
+<line x1="308.67" y1="118" x2="308.67" y2="478" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="308.67" y="495" text-anchor="middle" data-axis="x" data-v="0.005">0.005</text>
+<line x1="562.33" y1="118" x2="562.33" y2="478" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="562.33" y="495" text-anchor="middle" data-axis="x" data-v="0.010">0.010</text>
+<line x1="816" y1="118" x2="816" y2="478" stroke="#dddddd" stroke-width="1"/>
+<text class="tick" x="816" y="495" text-anchor="middle" data-axis="x" data-v="0.015">0.015</text>
+<path class="axis" fill="none" stroke="#333333" stroke-width="1.2" d="M55 118L55 478L816 478"/>
+<text x="435.5" y="518" text-anchor="middle" font-size="12">input cost per request at Sonnet 5.5 (US dollars)</text>
+<text x="14" y="298" transform="rotate(-90 14 298)" text-anchor="middle" font-size="12">exact (share of gold turns, 0 to 1)</text>
+<line class="ceiling" x1="55" y1="118" x2="816" y2="118" stroke="#222222" stroke-width="1.4" stroke-dasharray="5 4"><title>full (ceiling): exact 1.0</title></line>
+<polyline fill="none" stroke="#0072B2" stroke-width="1.2" stroke-opacity="0.6" points="74.23,318.02 86.06,248"/>
+<g class="pt" transform="translate(74.23 318.02)" data-series="alpha" data-v="0.4444"><title>alpha, budget 100: exact 0.4444, input cost 0.000379089 US dollars per request at Sonnet 5.5</title>
 <circle r="4.5" fill="#0072B2"/>
 </g>
-<text x="81.23" y="295.02" font-size="9" fill="#666666">100</text>
-<g class="pt" transform="translate(86.06 232)" data-series="alpha" data-v="0.6389"><title>alpha, budget 200: exact 0.6389, input cost 0.0006123 US dollars per request at Sonnet 5.5</title>
+<text x="81.23" y="311.02" font-size="9" fill="#666666">100</text>
+<g class="pt" transform="translate(86.06 248)" data-series="alpha" data-v="0.6389"><title>alpha, budget 200: exact 0.6389, input cost 0.0006123 US dollars per request at Sonnet 5.5</title>
 <circle r="4.5" fill="#0072B2"/>
 </g>
-<text x="93.06" y="225" font-size="9" fill="#666666">200</text>
-<polyline fill="none" stroke="#D55E00" stroke-width="1.2" stroke-dasharray="7 3" stroke-opacity="0.6" points="147.33,347.02 214.38,271.99"/>
-<g class="pt" transform="translate(147.33 347.02)" data-series="beta" data-v="0.3194"><title>beta, budget 100: exact 0.3194, input cost 0.00182 US dollars per request at Sonnet 5.5</title>
+<text x="93.06" y="241" font-size="9" fill="#666666">200</text>
+<polyline fill="none" stroke="#D55E00" stroke-width="1.2" stroke-dasharray="7 3" stroke-opacity="0.6" points="147.33,363.02 214.38,287.99"/>
+<g class="pt" transform="translate(147.33 363.02)" data-series="beta" data-v="0.3194"><title>beta, budget 100: exact 0.3194, input cost 0.00182 US dollars per request at Sonnet 5.5</title>
 <rect x="-4.5" y="-4.5" width="9" height="9" fill="#D55E00"/>
 </g>
-<text x="154.33" y="340.02" font-size="9" fill="#666666">100</text>
-<g class="pt" transform="translate(214.38 271.99)" data-series="beta" data-v="0.5278"><title>beta, budget 200: exact 0.5278, input cost 0.0031415926 US dollars per request at Sonnet 5.5</title>
+<text x="154.33" y="356.02" font-size="9" fill="#666666">100</text>
+<g class="pt" transform="translate(214.38 287.99)" data-series="beta" data-v="0.5278"><title>beta, budget 200: exact 0.5278, input cost 0.0031415926 US dollars per request at Sonnet 5.5</title>
 <rect x="-4.5" y="-4.5" width="9" height="9" fill="#D55E00"/>
 </g>
-<text x="221.38" y="264.99" font-size="9" fill="#666666">200</text>
-<g class="pt" transform="translate(681.33 102)" data-series="full" data-v="1.0"><title>full (ceiling): exact 1.0, input cost 0.0123456 US dollars per request at Sonnet 5.5</title>
+<text x="221.38" y="280.99" font-size="9" fill="#666666">200</text>
+<g class="pt" transform="translate(681.33 118)" data-series="full" data-v="1.0"><title>full (ceiling): exact 1.0, input cost 0.0123456 US dollars per request at Sonnet 5.5</title>
 <polygon points="0,-6.08 6.08,0 0,6.08 -6.08,0" fill="#222222"/>
 </g>
-<text x="672.33" y="116" text-anchor="end" font-size="11">full (ceiling)</text>
-<text x="52" y="528" font-size="11" font-weight="bold" fill="#666666">engine</text>
-<text x="250" y="528" font-size="11" font-weight="bold" fill="#666666">measure</text>
-<text x="370" y="528" font-size="11" font-weight="bold" fill="#666666">budget 100</text>
-<text x="520" y="528" font-size="11" font-weight="bold" fill="#666666">budget 200</text>
-<line x1="24" y1="542" x2="46" y2="542" stroke="#0072B2" stroke-width="1.6"/>
-<g transform="translate(35 542)">
+<text x="672.33" y="132" text-anchor="end" font-size="11">full (ceiling)</text>
+<text x="52" y="544" font-size="11" font-weight="bold" fill="#666666">engine</text>
+<text x="250" y="544" font-size="11" font-weight="bold" fill="#666666">measure</text>
+<text x="370" y="544" font-size="11" font-weight="bold" fill="#666666">budget 100</text>
+<text x="520" y="544" font-size="11" font-weight="bold" fill="#666666">budget 200</text>
+<line x1="24" y1="558" x2="46" y2="558" stroke="#0072B2" stroke-width="1.6"/>
+<g transform="translate(35 558)">
 <circle r="3.5" fill="#0072B2"/>
 </g>
-<text x="52" y="546">alpha</text>
-<text x="250" y="546">exact</text>
-<text x="370" y="546">0.4444</text>
-<text x="520" y="546">0.6389</text>
-<text x="52" y="564"></text>
-<text x="250" y="564">$ per request</text>
-<text x="370" y="564">0.000379089</text>
-<text x="520" y="564">0.0006123</text>
-<line x1="24" y1="578" x2="46" y2="578" stroke="#D55E00" stroke-width="1.6" stroke-dasharray="7 3"/>
-<g transform="translate(35 578)">
+<text x="52" y="562">alpha</text>
+<text x="250" y="562">exact</text>
+<text x="370" y="562">0.4444</text>
+<text x="520" y="562">0.6389</text>
+<text x="52" y="580"></text>
+<text x="250" y="580">$ per request</text>
+<text x="370" y="580">0.000379089</text>
+<text x="520" y="580">0.0006123</text>
+<line x1="24" y1="594" x2="46" y2="594" stroke="#D55E00" stroke-width="1.6" stroke-dasharray="7 3"/>
+<g transform="translate(35 594)">
 <rect x="-3.5" y="-3.5" width="7" height="7" fill="#D55E00"/>
 </g>
-<text x="52" y="582">beta</text>
-<text x="250" y="582">exact</text>
-<text x="370" y="582">0.3194</text>
-<text x="520" y="582">0.5278</text>
-<text x="52" y="600"></text>
-<text x="250" y="600">$ per request</text>
-<text x="370" y="600">0.00182</text>
-<text x="520" y="600">0.0031415926</text>
-<line x1="24" y1="614" x2="46" y2="614" stroke="#222222" stroke-width="1.6" stroke-dasharray="5 4"/>
-<g transform="translate(35 614)">
+<text x="52" y="598">beta</text>
+<text x="250" y="598">exact</text>
+<text x="370" y="598">0.3194</text>
+<text x="520" y="598">0.5278</text>
+<text x="52" y="616"></text>
+<text x="250" y="616">$ per request</text>
+<text x="370" y="616">0.00182</text>
+<text x="520" y="616">0.0031415926</text>
+<line x1="24" y1="630" x2="46" y2="630" stroke="#222222" stroke-width="1.6" stroke-dasharray="5 4"/>
+<g transform="translate(35 630)">
 <polygon points="0,-4.73 4.73,0 0,4.73 -4.73,0" fill="#222222"/>
 </g>
-<text x="52" y="618">full (ceiling)</text>
-<text x="250" y="618">exact</text>
-<text x="370" y="618">1.0</text>
-<text x="520" y="618"></text>
-<text x="52" y="636"></text>
-<text x="250" y="636">$ per request</text>
-<text x="370" y="636">0.0123456</text>
-<text x="520" y="636"></text>
+<text x="52" y="634">full (ceiling)</text>
+<text x="250" y="634">exact</text>
+<text x="370" y="634">1.0</text>
+<text x="520" y="634"></text>
+<text x="52" y="652"></text>
+<text x="250" y="652">$ per request</text>
+<text x="370" y="652">0.0123456</text>
+<text x="520" y="652"></text>
 </svg>

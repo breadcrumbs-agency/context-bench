@@ -20,6 +20,7 @@ import math
 import os
 import re
 import statistics
+import textwrap
 from decimal import Decimal
 from xml.sax.saxutils import escape
 
@@ -186,10 +187,13 @@ def document(height, title, body):
 
 
 def heading(title, notes):
-    out = text(24, 28, title, size=16, weight="bold")
-    for i, s in enumerate(notes):
-        out += text(24, 48 + 16 * i, s, size=12, fill=MUTED)
-    return out, 48 + 16 * len(notes) + 22
+    """The title and the notes under it. A note wraps at 100 characters, so that a wide fallback font still fits."""
+    out, y = text(24, 28, title, size=16, weight="bold"), 48
+    for note in notes:
+        for part in textwrap.wrap(note, 100, break_long_words=False, break_on_hyphens=False):
+            out += text(24, y, part, size=12, fill=MUTED)
+            y += 16
+    return out, y + 22
 
 
 class Panel:
