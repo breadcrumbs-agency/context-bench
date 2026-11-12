@@ -2,7 +2,7 @@
  "protocol": "context-bench/1",
  "harness": {
   "version": "0.1.0",
-  "commit": "e05e5eeef63e9d1dcb08b8702bd6698c3de95dfd",
+  "commit": "34a5ae8d285ccd30d5e18db89135b94bc4786f62",
   "dirty": false
  },
  "meter": "tokens(request) = sum over its messages of (UTF-8 bytes of text, tool calls and thinking, + 16) / 4; cache_reuse = share of request tokens in the leading messages that the request before also sent; cost units = 0.1 per cached token + 1.25 per other token; dollars use the dated price card",
@@ -44,14 +44,14 @@
  "runner": {
   "name": "breadcrumbs-agency",
   "role": "maintainer",
-  "date": "2026-11-12T03:32:06Z",
+  "date": "2026-11-12T04:29:43Z",
   "platform": "macOS-15.8.3-arm64-arm-64bit-Mach-O",
   "machine": "arm64",
   "cpus": 12,
   "python": "3.14.7",
   "hash_seed": "0",
-  "load_before": 15.29,
-  "load_after": 14.96
+  "load_before": 4.95,
+  "load_after": 4.87
  },
  "runs": [
   {
@@ -78,9 +78,9 @@
     "engine": {
      "folds": 92
     },
-    "select_ms_p50": 0.581,
-    "select_ms_p95": 15.187,
-    "wall_s": 34.3
+    "select_ms_p50": 0.166,
+    "select_ms_p95": 3.191,
+    "wall_s": 8.9
    },
    "chats": [
     {"id":"row-000","msgs":30,"requests":8,"tokens":40187.5,"cached":28175.0,"max":12012.5,"over":0,"excess":0.0,"dropped":0,"units":17833.12,"usd":{"claude-haiku-5-5":0.001783313,"claude-sonnet-5-5":0.03284875,"claude-opus-5-5":0.0656975},"qdropped":0,"engine":{"folds":0}},
@@ -489,7 +489,7 @@
    ],
    "questions": [],
    "trace": [
-    {"chat":"row-000","tokens":[62.75,490.0,1295.25,4784.75,5943.5,6170.0,9428.75,12012.5]}
+    {"chat":"row-021","tokens":[203.75,226.5,1776.75,4784.75,7201.75,7326.0,7474.0,7767.5,8816.0,9026.25,12178.25,13234.25,13313.0,13512.0,13633.25,13757.25,14088.25,14197.0,14304.0,14377.5,14461.75,14565.25,14636.25,14704.25,18758.75,18829.75,20081.5,20155.0,26339.25,26414.25,30854.25,31090.5,31222.0,31548.25,31626.5,31845.25,31938.25,32317.0,32636.75,26062.0,26249.25,26323.0,26469.5,26565.0,26718.75,26806.75,27082.75,27221.25,27356.75,27631.0,27770.25,27942.0,28012.0,28114.5,28218.25,28658.5,28799.0,28933.75,29074.75,29127.5,29269.5,29692.0,29830.75,30251.25,30421.75,30560.75,30752.5,31135.25,31254.25,31409.0,31659.5,31810.5,31970.5]}
    ]
   }
  ]

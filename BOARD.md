@@ -13,11 +13,11 @@ Chats: 403. Requests per engine: 6488. Source SHA-256: 62c628656764…. Price ca
 
 | # | Engine | Version | Tokens/request | Cost units/request | $/request Sonnet 5.5 | $/request Haiku 5.5 | Cache reuse | Max request | Requests over | Tokens over | Newest dropped | Select ms p50 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| - | breadcrumbs-ace | 0.4.1 (5be1e74) | 18214 | 3790.9 | 0.005932 | 0.000379 | 0.906 | 79584 | 763 | 10709362 | 0 | 0.58 |
-| - | drop | 1 | 12274 | 2794.6 | 0.004498 | 0.000279 | 0.889 | 32729 | 0 | 0 | 0 | 0.04 |
-| - | langchain-trim | 1.8.0 | 10145 | 2435.3 | 0.003980 | 0.000244 | 0.878 | 32759 | 0 | 0 | 1352 | 0.09 |
-| - | llamaindex-buffer | 0.14.25 | 10231 | 2542.5 | 0.004194 | 0.000254 | 0.871 | 32729 | 0 | 0 | 0 | 0.10 |
-| - | window | 1 | 16884 | 8582.6 | 0.016076 | 0.000858 | 0.645 | 32768 | 0 | 0 | 0 | 0.07 |
+| - | breadcrumbs-ace | 0.4.1 (5be1e74) | 18214 | 3790.9 | 0.005932 | 0.000379 | 0.906 | 79584 | 763 | 10709362 | 0 | 0.17 |
+| - | drop | 1 | 12274 | 2794.6 | 0.004498 | 0.000279 | 0.889 | 32729 | 0 | 0 | 0 | 0.03 |
+| - | langchain-trim | 1.8.0 | 10145 | 2435.3 | 0.003980 | 0.000244 | 0.878 | 32759 | 0 | 0 | 1352 | 0.05 |
+| - | llamaindex-buffer | 0.14.25 | 10231 | 2542.5 | 0.004194 | 0.000254 | 0.871 | 32729 | 0 | 0 | 0 | 0.08 |
+| - | window | 1 | 16884 | 8582.6 | 0.016076 | 0.000858 | 0.645 | 32768 | 0 | 0 | 0 | 0.04 |
 
 This source has no questions. It measures exposure and cost, not accuracy or behavior: the board names no engine ahead.
 

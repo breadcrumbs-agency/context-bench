@@ -147,8 +147,9 @@ under its tables. `--private` also charts the runs that the board withholds.
 | `charts/<source>-trace.svg` | the tokens of each request of one chat, in order: a panel for each budget, a line for each engine. The chat is the first by id whose largest uncut request is over the largest budget of the run (see below). `drop` and ACE fold in a sawtooth, `window` stays at its cap, and `full` leaves the scale (a note says where) |
 
 A source without questions (codex-sessions) has the cost, cache and trace charts only. Lines of engines that send the same
-messages lie on each other (in the codex chat of the first board all five do: it has 8 requests, all under the budget);
-the table under each plot lists every engine.
+messages lie on each other (in the codex chat of the first board, row-021, the lines of all five engines lie on each
+other for requests 1 to 39, and they split at request 40, where the chat first passes the budget); the table under each
+plot lists every engine.
 
 Every chart follows five rules. Each measured axis is linear and starts at zero, at the bottom and at the left. The budget
 axis has equal steps and is labeled with the budget values (the budgets double; the steps do not). Each axis label names
