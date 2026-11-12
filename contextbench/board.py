@@ -86,6 +86,8 @@ def _table(items, questions):
         s, eng = run["summary"], rec["engine"]
         if eng.get("ceiling"):
             mark = "ceiling"
+        elif not questions:
+            mark = "-"  # no questions: the rows go by name, and nothing ranks them
         else:
             rank += 1
             mark = str(rank)

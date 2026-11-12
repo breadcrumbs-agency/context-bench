@@ -113,7 +113,8 @@ class TestRender(unittest.TestCase):
         self.assertNotIn("Head to head", text)
         self.assertNotIn("| Exact |", text)
         self.assertIn("This source has no questions", text)
-        self.assertIn("| 1 | a | 1 | 500 | 300.0 |", text)
+        self.assertIn("| - | a | 1 | 500 | 300.0 |", text)  # no rank without questions
+        self.assertIn("| - | b | 1 | 500 | 300.0 |", text)
 
     def test_dollars_show_for_sonnet_and_haiku(self):
         text = render(make_record("a", ones(5, 10)))
