@@ -6,3 +6,4 @@ dist/
 .venv/
 # runs that are not for publication (trials, licensed engines without a grant)
 results/private/
+.DS_Store
