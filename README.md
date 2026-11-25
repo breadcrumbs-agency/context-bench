@@ -84,7 +84,7 @@ another size or SHA-256. `--data PATH` uses a local copy, with the same check.
 | `full` | the ceiling: the whole chat at each request. No budget, no rank | in-repo | MIT |
 | `window` | the newest messages that fit the budget (port of `ace_bench` Window) | in-repo | MIT |
 | `drop` | the same window, cut in steps like ACE, so its prefix stays cached (port of `ace_bench` Drop) | in-repo | MIT |
-| `breadcrumbs-ace` | ACE of the breadcrumbs plugin, at its default settings | `breadcrumbs @ git+https://github.com/breadcrumbs-agency/hermes-breadcrumb-plugin@5be1e74…` | MIT |
+| `breadcrumbs-ace` | ACE of the breadcrumbs plugin, at its default settings | `breadcrumbs @ git+https://github.com/breadcrumbs-agency/breadcrumbs-hermes@5be1e74…` | MIT |
 | `langchain-trim` | langchain-core `trim_messages`, strategy `last`, `include_system`, `start_on` human | `langchain-core==1.8.0` | MIT |
 | `llamaindex-buffer` | llama-index-core `ChatMemoryBuffer`, `token_limit` = the budget | `llama-index-core==0.14.25` | MIT |
 
